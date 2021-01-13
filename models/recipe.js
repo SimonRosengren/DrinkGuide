@@ -7,5 +7,5 @@ const schema = mongoose.Schema({
     instructions: String,
     ingredients: [{type: Ingredient}]
 })
-const Ingredient = mongoose.model('Humidity', schema);
-module.exports = Ingredient;
+const Recipe = mongoose.model('Recipe', schema);
+module.exports = Recipe;
