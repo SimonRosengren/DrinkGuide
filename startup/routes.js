@@ -7,6 +7,7 @@ module.exports = (app, express) => {
         schema,
         graphiql: true
     }))
+
     app.use(express.json())
     //app.use(errorHandler)
 }

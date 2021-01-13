@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 const dbPassword = process.env.DB_PASSWORD;
+const db = process.env.DATABASE;
 
 module.exports = async () => {
     try {
-        await mongoose.connect(`mongodb+srv://admin:${dbPassword}@cluster0.ncvgh.mongodb.net/drinkguide?retryWrites=true&w=majority`, {
+        await mongoose.connect(`mongodb+srv://admin:${dbPassword}@cluster0.ncvgh.mongodb.net/${db}?retryWrites=true&w=majority`, {
             useUnifiedTopology: true,
             useNewUrlParser: true,
         })
