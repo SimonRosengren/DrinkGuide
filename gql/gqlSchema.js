@@ -1,6 +1,6 @@
 const graphql = require('graphql');
 const Ingredient = require('../models/ingredient');
-const Recipte = require('../models/recipe');
+const Recipe = require('../models/recipe');
 
 const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLSchema, GraphQLList } = graphql;
 
@@ -14,8 +14,9 @@ const RecipeType = new GraphQLObjectType({
             type: IngredientType,
             async resolve(parent, args) {
                 // Since there is no unique ID connecting data entries and since one entry might fail on certain data, the connection is 
-                // any entry made 5 minutes before or 5 minutes after.  
-                const ingredients = await Ingredient.find()
+                // any entry made 5 minutes before or 5 minutes after.
+                console.log(`Parent: ${JSON.stringify(parent)}`);  
+                
 
                 let before = new Date(parseInt(parent.date));
                 before.setMinutes(before.getMinutes() - 5);
@@ -36,27 +37,35 @@ const IngredientType = new GraphQLObjectType({
         keywords: { type: GraphQLList(GraphQLString) },
         description: { type: GraphQLString }
     })
-});
+})
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        Drink: {
-            type: DrinkTypeType,
-            args: { date: { type: GraphQLString } },
+        Recipe: {
+            type: GraphQLList(RecipeType),
             async resolve(parent, args) {
-                const result = await SoilMoisture.findOne({ date: args.date })
+                const result = await Recipe.find({});
                 return result;
-            }
+            }            
         },
-        SoilMoistures: {
-            type: GraphQLList(DrinkType),
-            args: { limit: { type: GraphQLInt } },
+
+        Ingredient: {
+            type: GraphQLList(IngredientType),
+            args: { id: { type: GraphQLString } },
             async resolve(parent, args) {
-                const result = await SoilMoisture.find({}).sort({ date: -1 }).limit(args.limit);
-                return result;
+                const result = await Ingredient.findOne({ id })
             }
         }
+
+        // SoilMoistures: {
+        //     type: GraphQLList(DrinkType),
+        //     args: { limit: { type: GraphQLInt } },
+        //     async resolve(parent, args) {
+        //         const result = await SoilMoisture.find({}).sort({ date: -1 }).limit(args.limit);
+        //         return result;
+        //     }
+        // }
     }
 })
 

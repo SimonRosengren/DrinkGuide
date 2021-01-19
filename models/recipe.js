@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
-const Ingredient = require('./ingredient')
 
-const schema = mongoose.Schema({
+const schema = new mongoose.Schema({
     name: String,
     description: String,
     instructions: String,
-    ingredients: [{type: Ingredient}]
+    ingredients: [String] // IDs of ingredients
 })
 const Recipe = mongoose.model('Recipe', schema);
 module.exports = Recipe;
