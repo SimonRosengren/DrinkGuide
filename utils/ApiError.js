@@ -11,3 +11,5 @@ class ApiError extends Error {
         this.publicMessage = publicMessage;
     }
 }
+
+module.exports = ApiError;

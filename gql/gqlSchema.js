@@ -18,12 +18,12 @@ const RecipeType = new GraphQLObjectType({
                 console.log(`Parent: ${JSON.stringify(parent)}`);  
                 
 
-                let before = new Date(parseInt(parent.date));
-                before.setMinutes(before.getMinutes() - 5);
-                let later = new Date(parseInt(parent.date));
-                later.setMinutes(before.getMinutes() + 5);
-                const temp = await Temperature.find({ date: { $gte: before.getTime(), $lt: later.getTime() } }).sort({ date: -1 }).limit(1);
-                return temp[0];
+                // let before = new Date(parseInt(parent.date));
+                // before.setMinutes(before.getMinutes() - 5);
+                // let later = new Date(parseInt(parent.date));
+                // later.setMinutes(before.getMinutes() + 5);
+                // const temp = await Temperature.find({ date: { $gte: before.getTime(), $lt: later.getTime() } }).sort({ date: -1 }).limit(1);
+                // return temp[0];
             }
         }
     })
@@ -34,8 +34,9 @@ const IngredientType = new GraphQLObjectType({
     fields: () => ({
         id: { type: GraphQLID },
         name: { type: GraphQLString },
-        keywords: { type: GraphQLList(GraphQLString) },
-        description: { type: GraphQLString }
+        color: { type: GraphQLString },
+        description: { type: GraphQLString },
+        alcohol: { type: GraphQLInt }
     })
 })
 
@@ -43,7 +44,7 @@ const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
         Recipe: {
-            type: GraphQLList(RecipeType),
+            type: RecipeType,
             async resolve(parent, args) {
                 const result = await Recipe.find({});
                 return result;
@@ -51,10 +52,11 @@ const RootQuery = new GraphQLObjectType({
         },
 
         Ingredient: {
-            type: GraphQLList(IngredientType),
-            args: { id: { type: GraphQLString } },
+            type: IngredientType,
+            args: { id: { type: GraphQLID } },
             async resolve(parent, args) {
-                const result = await Ingredient.findOne({ id })
+                const result = await Ingredient.findOne({ name: 'milk' }).exec();
+                return result;
             }
         }
 
