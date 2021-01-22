@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+button {
+    border: none;
+    background-color: green;
+    &.active {
+        
+    }
+    &.inactive {
+        background-color: red !important;
+    }
+}
