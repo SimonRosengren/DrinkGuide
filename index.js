@@ -9,9 +9,9 @@ require('dotenv').config()
 require('./startup/routes')(app, express);
 require('./startup/db')();
 
-// app.get('*', (req, res) =>{
-//   res.sendFile(path.join(__dirnamem, 'client/public', 'index.html'));
-// }); 
+app.get('*', (req,res) =>{
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+}); 
 
 app.listen(port, () => {
   console.log(`App running and listening on port: ${port}`)
