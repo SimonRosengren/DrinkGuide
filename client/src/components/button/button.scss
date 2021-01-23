@@ -3,11 +3,14 @@
 
 button {
     border: none;
-    background-color: green;
+    color: $color-button-text-light;
+    border-radius: 2em;
+    padding: 1.3rem $spacing-xl;
+    font-size: 1.3rem;
     &.active {
         
     }
     &.inactive {
-        background-color: red !important;
+        background-color: $color-button-background-dark;
     }
 }
