@@ -41,4 +41,29 @@ const checkIfIngredientsExist = (ingredients) => {
   return true;
 }
 
+
+router.get('/batch', async (req, res, next) => {
+  const ingredients = req.query.ingredient;
+  const maxMissing = req.params.maxMissing || 0;
+
+  if (!ingredients) {
+    // return random recipes
+  }
+
+
+  // Find the recipes where there is an intersection of ingredients. Go through all these recipes and take the totalingredients - intersection.length inte större än max saknade ingredienser
+
+  let acceptedRecipes = [];
+  const recipes = await Recipe.find({ ingredients: { "$in": ingredients } }).exec(); // Get intersecting recipes. Returns empty array?
+  recipes.forEach(r => {
+    const intersection = ingredients.filter(value => r.ingredients.includes(value));  // get the intersection
+    if (r.ingredients.length() - intersection.length() > maxMissing) {  // only add those where the missing ingredients are ok in number
+      acceptedRecipes.push(r);
+    }
+  })
+
+
+  res.send(acceptedRecipes);
+})
+
 module.exports = router;
