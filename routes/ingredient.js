@@ -27,4 +27,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+router.get('/suggest', async (req, res, next) => {
+  try {
+    const phrase = req.query.phrase;
+    const suggestions = await Ingredient.find({ name: new RegExp('^' + phrase ) }, 'name').exec(); // ID is always provided as _id
+    res.send(suggestions);
+  } catch (error) {
+    next(error)
+  }
+})
+
 module.exports = router;
