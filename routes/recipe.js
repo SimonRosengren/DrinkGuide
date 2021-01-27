@@ -14,6 +14,8 @@ const schema = Joi.object({
 
 router.post('/', async (req, res, next) => {
   try {
+    console.log(JSON.stringify(req.body));
+
     const { name, description, instructions, ingredients } = req.body;
     const validation = await schema.validateAsync(
       { name, description, instructions, ingredients }

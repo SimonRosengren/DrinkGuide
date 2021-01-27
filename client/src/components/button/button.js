@@ -8,6 +8,7 @@ function Button(props) {
   return (
     <div>
       <button
+      type="button"
         onClick={() => {
           setActive(!active);
           onClick();
