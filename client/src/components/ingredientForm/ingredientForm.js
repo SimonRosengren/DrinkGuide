@@ -22,7 +22,7 @@ function IngredientForm(props) {
       ).json();
       let temp = [];
       (result || []).forEach((i) => {
-        temp.push(i.name); // We have _id here aswell
+        temp.push(i); // We have _id here aswell
       });
       setSuggestions(temp);
     } else {
@@ -31,9 +31,8 @@ function IngredientForm(props) {
   };
 
   const handleIngredientsInput = (e) => {
-    setCurrentIngredient(
-      suggestions.find((i) => i.name === e.target.innerHTML)
-    );
+    const clickedIngredient = suggestions.find((i) => i.name === e.target.innerHTML)
+    setCurrentIngredient(clickedIngredient);
     setIngredientInput(e.target.innerHTML)
   };
 
@@ -54,7 +53,7 @@ function IngredientForm(props) {
     console.log(recipeName)
     const result = await fetch(`/api/recipe`, {
         method: 'POST',
-        header: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             name: recipeName,
             description,
@@ -126,7 +125,7 @@ function IngredientForm(props) {
               <ul className="halfsize">
                 {suggestions.map((s, index) => (
                   <li key={index} onClick={handleIngredientsInput}>
-                    {s}
+                    {s.name}
                   </li>
                 ))}
               </ul>
