@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./inputWithButton.scss";
+import styles from "./inputWithButton.module.scss";
+import { RiSearch2Line } from "react-icons/ri";
 
 function InputWithButton(props) {
   const [value, setValue] = useState("");
@@ -17,17 +18,15 @@ function InputWithButton(props) {
   }
 
   return (
-    <div className="textbar-with-button-container">
-      <form submit={handleSubmit}>
+    <div className={styles.wrapper}>
         <input
-          className="textbar-with-button-input"
+          className={styles.input}
           type="text"
           value={value}
           placeholder="Search ingredients..."
           onChange={e => handleOnChange(e)}
         />
-        <input className="textbar-with-button-button" type="submit" value="Submit" />
-      </form>
+        <div className={styles.button}><RiSearch2Line /></div>
     </div>
   );
 }

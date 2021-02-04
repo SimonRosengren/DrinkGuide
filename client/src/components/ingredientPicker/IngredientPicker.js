@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ingredientPicker.scss";
+import styles from "./ingredientPicker.module.scss";
 import InputWithButton from "../inputWithButton/inputWithButton";
 import IngredientCard from "../ingredientCard/ingredientCard";
 
@@ -8,8 +8,8 @@ function IngredientPicker(props) {
   const [pickedIngredients, setPickedIngredients] = useState([]);
 
   return (
-    <div>
-      <div className="ingredient-card-wrapper">
+    <div className={styles.wrapper}>
+      <div className={styles.topWrapper}>
         {suggestedIngredients.map((i, index) => {
           return (
             <IngredientCard
@@ -36,12 +36,12 @@ function IngredientPicker(props) {
       <InputWithButton
         handleOnChange={async (e) => {
           if (e.target.value) {
-            let result = await (
-              await fetch(
-                `/api/ingredient/suggest?phrase=${e.target.value}`
-              )
-            ).json();
-
+            // let result = await (
+            //   await fetch(
+            //     `/api/ingredient/suggest?phrase=${e.target.value}`
+            //   )
+            // ).json();
+            let result = [{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'}]
             setSuggestedIngredients(result);
           } else {
             setSuggestedIngredients([]);
@@ -49,7 +49,7 @@ function IngredientPicker(props) {
         }}
       />
 
-      <div className="ingredient-card-wrapper">
+      <div className={styles.bottomWrapper}>
         {pickedIngredients.map((i, index) => {
           return (
             <IngredientCard

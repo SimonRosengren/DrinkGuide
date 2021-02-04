@@ -1,2 +1,9 @@
 @import '../../styles/colors.scss';
 @import '../../styles/sizes.scss';
+
+.card {
+    background-color: $color-fifth;
+    padding: 0 $spacing-s;
+    margin: $spacing-xs;
+    border-radius: 6px;
+}

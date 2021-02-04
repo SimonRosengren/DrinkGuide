@@ -3,13 +3,12 @@
 
 button {
     border: none;
-    color: $color-button-text-light;
     border-radius: 2rem;
     padding: $spacing-s $spacing-l;
     &.active {
         
     }
     &.inactive {
-        background-color: $color-button-background-dark;
+        
     }
 }

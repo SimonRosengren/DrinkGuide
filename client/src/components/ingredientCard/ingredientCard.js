@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ingredientCard.module.scss";
+import styles from "./ingredientCard.module.scss";
 
 function IngredientCard(props) {
     const [isActive, setIsActive] = useState(false);
@@ -15,7 +15,7 @@ function IngredientCard(props) {
   };
 
   return (
-    <div className={"ingredientCard"} onClick={(e) => handleOnClick(e)}>
+    <div className={styles.card} onClick={(e) => handleOnClick(e)}>
       <h3>{props.title}</h3>
       {props.unmountMe ? <p onClick={dismiss}>x</p> : null}
     </div>
