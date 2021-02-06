@@ -6,7 +6,7 @@ import IngredientForm from './components/ingredientForm/ingredientForm';
 function App() {
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <Main />
     </div>
   );

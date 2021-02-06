@@ -16,7 +16,7 @@ function IngredientCard(props) {
 
   return (
     <div className={styles.card} onClick={(e) => handleOnClick(e)}>
-      <h3>{props.title}</h3>
+      <p>{props.title}</p>
       {props.unmountMe ? <p onClick={dismiss}>x</p> : null}
     </div>
   );

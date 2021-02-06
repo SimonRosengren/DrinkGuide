@@ -1,26 +1,33 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
 .wrapper {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding-top: $spacing-m;
 
-    .topWrapper {
+    .leftWrapper {
         position: absolute;
-        top: 20vh;
+        top: 25vh;
+        left: 2vh;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        left: 1.6rem;
+        width: 40%;
+        justify-content: space-between;
     }
 
-    .bottomWrapper {
+    .rightWrapper {
         position: absolute;
-        bottom: 20vh;
+        top: 25vh;
+        right: 2vh;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        left: 1.6rem;
+        width: 45%;
+        justify-content: space-between;
     }
 
 }

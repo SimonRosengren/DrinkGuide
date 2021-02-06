@@ -9,7 +9,7 @@ function IngredientPicker(props) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.topWrapper}>
+      <div className={styles.leftWrapper}>
         {suggestedIngredients.map((i, index) => {
           return (
             <IngredientCard
@@ -36,12 +36,12 @@ function IngredientPicker(props) {
       <InputWithButton
         handleOnChange={async (e) => {
           if (e.target.value) {
-            // let result = await (
-            //   await fetch(
-            //     `/api/ingredient/suggest?phrase=${e.target.value}`
-            //   )
-            // ).json();
-            let result = [{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'}]
+            let result = await (
+              await fetch(
+                `/api/ingredient/suggest?phrase=${e.target.value}`
+              )
+            ).json();
+            // let result = [{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'},{name: 'test'}]
             setSuggestedIngredients(result);
           } else {
             setSuggestedIngredients([]);
@@ -49,7 +49,7 @@ function IngredientPicker(props) {
         }}
       />
 
-      <div className={styles.bottomWrapper}>
+      <div className={styles.rightWrapper}>
         {pickedIngredients.map((i, index) => {
           return (
             <IngredientCard

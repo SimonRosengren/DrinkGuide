@@ -1,0 +1,8 @@
+@import "../../styles/colors.scss";
+@import "../../styles/sizes.scss";
+
+.header {
+  background-color: $color-fourth;
+  padding: $spacing-xs 0;
+  box-sizing: border-box;
+}

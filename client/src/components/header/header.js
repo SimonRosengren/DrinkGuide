@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import './header.scss';
+import React from 'react';
+import styles from './header.module.scss';
+import Logo from '../logo/logo';
 
 function Header() {
-    const [content, setContent] = useState();
     return (
-        <div className="header">
-            im a menu
+        <div className={styles.header}>
+            <Logo />
         </div>
     );
 }

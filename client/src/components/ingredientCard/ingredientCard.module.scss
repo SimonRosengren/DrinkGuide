@@ -3,7 +3,11 @@
 
 .card {
     background-color: $color-fifth;
-    padding: 0 $spacing-s;
-    margin: $spacing-xs;
+    padding: $spacing-s;
+    margin: 0.5rem 0;
     border-radius: 6px;
+}
+
+p {
+    margin: 0;
 }
