@@ -8,26 +8,53 @@
     align-items: center;
     padding-top: $spacing-m;
 
-    .leftWrapper {
+    .leftColumn {
+        text-align: center;
         position: absolute;
-        top: 25vh;
-        left: 2vh;
+        top: 20vh;
+        left: 2vw;
+        height: 60vh;
+        width: 48vw;
+    }
+
+    .leftWrapper {
+        background-color: $color-secondary;
+        border-right: 1px solid $color-fifth;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 40%;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+
+
+    .rightColumn {
+        position: absolute;
+        top: 20vh;
+        right: 2vw;
+        width: 48vw;
+        height: 60vh;
+        text-align: center;       
     }
 
     .rightWrapper {
-        position: absolute;
-        top: 25vh;
-        right: 2vh;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 45%;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        background-color: $color-secondary;
+        border-left: 1px solid $color-third;
+        height: 100%;
+    }
+
+    .nextButton {
+        border: none;
+        border-radius: 6px;
+        background-color: $color-sixth;
+        color: $color-text;
+        padding: $spacing-s;
+        bottom: 4vh;
+        position: absolute;
     }
 
 }
