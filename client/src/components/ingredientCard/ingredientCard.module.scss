@@ -1,12 +1,41 @@
 @import '../../styles/colors.scss';
 @import '../../styles/sizes.scss';
 
-.card {
-    background-color: $color-third;
-    padding: $spacing-s;
-    margin: 0.5rem;
-    border-radius: 6px;
+
+.wrapper {
+    width: 100%;
+    margin-bottom: $spacing-s;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    .button {
+        background-color: $color-fifth;
+        border: none;
+        border-radius: 6px;
+        padding: $spacing-s;
+        font-size: large;
+        width: 100%;
+    }
+    .split {
+        background-color: $color-fifth;
+        border: none;
+        border-radius: 6px 0 0 6px;
+        padding: $spacing-s;
+        width: 100%;
+        flex: 4;
+        font-size: large;
+    }
+    .dismissButton{
+        margin: 0;
+        border: none;
+        background-color: $color-third;
+        border-radius: 0 6px 6px 0;
+        flex: 1;
+        padding: $spacing-s;
+        font-size: large;
+    }
 }
+
 
 p {
     margin: 0;

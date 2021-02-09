@@ -18,11 +18,10 @@ function IngredientPicker(props) {
               <IngredientCard
                 key={index}
                 title={i.name}
-                handleOnClick={async (e) => {
-                  const clickedIngredient = suggestedIngredients.find(
-                    (i) => i.name === e.target.innerHTML
-                  );
-
+                id={index}
+                handleOnClick={async id => {
+                  const clickedIngredient = suggestedIngredients[id]
+                  
                   let temp = [];
                   for (const ingredient of pickedIngredients) {
                     temp.push(ingredient);

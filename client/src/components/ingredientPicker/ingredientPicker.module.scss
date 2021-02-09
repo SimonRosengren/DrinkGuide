@@ -13,7 +13,7 @@
         position: absolute;
         top: 20vh;
         left: 2vw;
-        height: 60vh;
+        height: 50vh;
         width: 48vw;
     }
 
@@ -21,10 +21,10 @@
         background-color: $color-secondary;
         border-right: 1px solid $color-fifth;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        flex-direction: column;
         height: 100%;
+        overflow: scroll;
+        padding: $spacing-s;
     }
 
 
@@ -33,18 +33,18 @@
         top: 20vh;
         right: 2vw;
         width: 48vw;
-        height: 60vh;
+        height: 50vh;
         text-align: center;       
     }
 
     .rightWrapper {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        flex-direction: column;
         background-color: $color-secondary;
         border-left: 1px solid $color-third;
         height: 100%;
+        overflow: scroll;
+        padding: $spacing-s;
     }
 
     .nextButton {
@@ -53,7 +53,7 @@
         background-color: $color-sixth;
         color: $color-text;
         padding: $spacing-s;
-        bottom: 4vh;
+        top: 90vh;
         position: absolute;
     }
 
