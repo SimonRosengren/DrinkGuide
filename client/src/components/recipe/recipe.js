@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./recipe.scss";
-import Button from "../button/button";
 
 function Recipe(props) {
 //   const { onClick, text } = props;
@@ -20,7 +19,6 @@ function Recipe(props) {
         <div className="recipe__instructions-wrapper">
             <p className="recipe__instructions">Im instructions, </p>
         </div>
-        <Button text="Another one"   />
     </div>
   );
 }

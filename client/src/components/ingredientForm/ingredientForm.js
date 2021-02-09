@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ingredientForm.scss";
-import Button from '../button/button'
 
 function IngredientForm(props) {
   const [recipeName, setRecipeName] = useState("");
@@ -132,7 +131,7 @@ function IngredientForm(props) {
             </div>
           </div>
           <input type="text" name="qty" className="halfsize" value={qtyInput} onChange={e => setQtyInput(e.target.value)} />
-          <Button text="add" onClick={() => { addIngredient() }} />
+          <button onClick={() => { addIngredient() }}>add</button>
         </div>
 
         <input type="submit" value="Submit" />
