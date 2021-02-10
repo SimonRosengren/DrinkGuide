@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import styles from "./ingredientPicker.module.scss";
-import InputWithButton from "../inputWithButton/inputWithButton";
-import IngredientCard from "../ingredientCard/ingredientCard";
+import InputWithButton from "../../components/inputWithButton/inputWithButton";
+import IngredientCard from "../../components/ingredientCard/ingredientCard";
 import { BiDrink } from "react-icons/bi";
 
 function IngredientPicker(props) {
   const [suggestedIngredients, setSuggestedIngredients] = useState([]);
   const [pickedIngredients, setPickedIngredients] = useState([]);
+
+  const handleFindDrinks = () => {};
 
   return (
     <div className={styles.wrapper}>
@@ -19,16 +21,14 @@ function IngredientPicker(props) {
                 key={index}
                 title={i.name}
                 id={index}
-                handleOnClick={async id => {
-                  const clickedIngredient = suggestedIngredients[id]
-                  
+                handleOnClick={async (id) => {
+                  const clickedIngredient = suggestedIngredients[id];
                   let temp = [];
                   for (const ingredient of pickedIngredients) {
                     temp.push(ingredient);
                   }
                   temp.push(clickedIngredient);
                   setPickedIngredients(temp);
-                  console.log("wtf");
                 }}
               />
             );
@@ -40,24 +40,8 @@ function IngredientPicker(props) {
         handleOnChange={async (e) => {
           if (e.target.value) {
             let result = await (
-              await fetch(
-                `/api/ingredient/suggest?phrase=${e.target.value}`
-              )
+              await fetch(`/api/ingredient/suggest?phrase=${e.target.value}`)
             ).json();
-            // let result = [
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            //   { name: "test" },
-            // ];
             setSuggestedIngredients(result);
           } else {
             setSuggestedIngredients([]);
@@ -86,7 +70,9 @@ function IngredientPicker(props) {
           })}
         </div>
       </div>
-      <button className={styles.nextButton}>Find drinks < BiDrink className={styles.icon} /></button>
+      <button className={styles.nextButton} onClick={handleFindDrinks}>
+        Find drinks <BiDrink className={styles.icon} />
+      </button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './main.module.scss';
-import IngredientPicker from '../ingredientPicker/IngredientPicker';
+import IngredientPicker from '../../pages/ingredientPicker/IngredientPicker';
 function Main() {
     return (
         <div className={styles.main}>
