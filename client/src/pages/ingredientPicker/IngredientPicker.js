@@ -3,12 +3,15 @@ import styles from "./ingredientPicker.module.scss";
 import InputWithButton from "../../components/inputWithButton/inputWithButton";
 import IngredientCard from "../../components/ingredientCard/ingredientCard";
 import { BiDrink } from "react-icons/bi";
+import { useHistory } from "react-router-dom";
 
 function IngredientPicker(props) {
   const [suggestedIngredients, setSuggestedIngredients] = useState([]);
-  const [pickedIngredients, setPickedIngredients] = useState([]);
+  const history = useHistory();
 
-  const handleFindDrinks = () => {};
+  const handleFindDrinks = () => {
+    history.push("/browse")
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -24,11 +27,11 @@ function IngredientPicker(props) {
                 handleOnClick={async (id) => {
                   const clickedIngredient = suggestedIngredients[id];
                   let temp = [];
-                  for (const ingredient of pickedIngredients) {
+                  for (const ingredient of props.pickedIngredients) {
                     temp.push(ingredient);
                   }
                   temp.push(clickedIngredient);
-                  setPickedIngredients(temp);
+                  props.setPickedIngredients(temp);
                 }}
               />
             );
@@ -52,18 +55,18 @@ function IngredientPicker(props) {
       <div className={styles.rightColumn}>
         <h3>Your bar</h3>
         <div className={styles.rightWrapper}>
-          {pickedIngredients.map((i, index) => {
+          {props.pickedIngredients.map((i, index) => {
             return (
               <IngredientCard
                 key={index}
                 title={i.name}
                 unmountMe={() => {
                   let temp = [];
-                  for (const ingredient of pickedIngredients) {
+                  for (const ingredient of props.pickedIngredients) {
                     temp.push(ingredient);
                   }
                   temp.splice(index, 1);
-                  setPickedIngredients(temp);
+                  props.setPickedIngredients(temp);
                 }}
               />
             );
