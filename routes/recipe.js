@@ -5,7 +5,8 @@ const Recipe = require("../models/recipe");
 const Ingredient = require('../models/ingredient')
 const Joi = require("joi");
 const ApiError = require("../utils/ApiError");
-const shutterStockClient = require('../utils/shutterstockClient');
+const fetch = require('node-fetch');
+const config = require('../lib/config');
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -16,8 +17,6 @@ const schema = Joi.object({
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body)
-
     const { name, description, instructions, ingredients } = req.body;
     const validation = await schema.validateAsync(
       { name, description, instructions, ingredients }
@@ -73,7 +72,8 @@ router.get('/batch', async (req, res, next) => {
   for (const recipe of recipes) {
     const intersection = ingredients.filter(value => recipe.ingredients.includes(value));  // get the intersection
     if (recipe.ingredients.length - intersection.length > maxMissing) {  // only add those where the missing ingredients are ok in number
-      const image = await shutterStockClient.getImage(`${recipe.name}`);
+      let image = await fetch(`https://api.unsplash.com/search/photos?orientation=portrait&query=${recipe.name} drink&client_id=${config.unsplashed.key}&page=1&per_page=1`);
+      image = await image.json();
       const recipeWithImage = {
         image,
         ...recipe._doc
