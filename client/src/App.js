@@ -17,6 +17,9 @@ function App() {
           <Route path="/browse">
             <DrinkBrowser pickedIngredients={pickedIngredients} />
           </Route>
+          <Route path="/add-recipe">
+            <IngredientForm />
+          </Route>
           <Route path="/">
             <IngredientPicker
               pickedIngredients={pickedIngredients}

@@ -9,10 +9,10 @@
     }
     .title {        
         color: $color-third;
-        font-size: 4rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        background-color: red($color: #000000);
+        
+    }
+    .description {
+        font-size: large;
     }
 }

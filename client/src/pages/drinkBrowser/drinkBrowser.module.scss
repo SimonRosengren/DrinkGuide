@@ -1,4 +1,8 @@
+@import '../../styles/sizes.scss';
+@import '../../styles/colors.scss';
+
 .wrapper {
+    background-color: $color-fourth;
     .imageWrapper {
         height: 10rem;
     }

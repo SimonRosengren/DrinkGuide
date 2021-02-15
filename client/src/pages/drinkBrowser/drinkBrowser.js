@@ -44,7 +44,7 @@ function DrinkBrowser(props) {
           <DrinkCard
             image={d.image.results[0].urls.regular}
             drinkName={d.name}
-            drinkDescription={d.drinkDescription}
+            drinkDescription={d.description}
           />
         ))}
       </Carousel>

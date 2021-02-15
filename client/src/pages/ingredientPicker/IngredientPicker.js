@@ -10,35 +10,11 @@ function IngredientPicker(props) {
   const history = useHistory();
 
   const handleFindDrinks = () => {
-    history.push("/browse")
+    history.push("/browse");
   };
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.leftColumn}>
-        <h3>Suggestions</h3>
-        <div className={styles.leftWrapper}>
-          {suggestedIngredients.map((i, index) => {
-            return (
-              <IngredientCard
-                key={index}
-                title={i.name}
-                id={index}
-                handleOnClick={async (id) => {
-                  const clickedIngredient = suggestedIngredients[id];
-                  let temp = [];
-                  for (const ingredient of props.pickedIngredients) {
-                    temp.push(ingredient);
-                  }
-                  temp.push(clickedIngredient);
-                  props.setPickedIngredients(temp);
-                }}
-              />
-            );
-          })}
-        </div>
-      </div>
-
       <InputWithButton
         handleOnChange={async (e) => {
           if (e.target.value) {
@@ -51,26 +27,51 @@ function IngredientPicker(props) {
           }
         }}
       />
+      <div className={styles.barWrapper}>
+        <div className={styles.leftColumn}>
+          <h3>Suggestions</h3>
+          <div className={styles.leftWrapper}>
+            {suggestedIngredients.map((i, index) => {
+              return (
+                <IngredientCard
+                  key={index}
+                  title={i.name}
+                  id={index}
+                  handleOnClick={async (id) => {
+                    const clickedIngredient = suggestedIngredients[id];
+                    let temp = [];
+                    for (const ingredient of props.pickedIngredients) {
+                      temp.push(ingredient);
+                    }
+                    temp.push(clickedIngredient);
+                    props.setPickedIngredients(temp);
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
 
-      <div className={styles.rightColumn}>
-        <h3>Your bar</h3>
-        <div className={styles.rightWrapper}>
-          {props.pickedIngredients.map((i, index) => {
-            return (
-              <IngredientCard
-                key={index}
-                title={i.name}
-                unmountMe={() => {
-                  let temp = [];
-                  for (const ingredient of props.pickedIngredients) {
-                    temp.push(ingredient);
-                  }
-                  temp.splice(index, 1);
-                  props.setPickedIngredients(temp);
-                }}
-              />
-            );
-          })}
+        <div className={styles.rightColumn}>
+          <h3>Your bar</h3>
+          <div className={styles.rightWrapper}>
+            {props.pickedIngredients.map((i, index) => {
+              return (
+                <IngredientCard
+                  key={index}
+                  title={i.name}
+                  unmountMe={() => {
+                    let temp = [];
+                    for (const ingredient of props.pickedIngredients) {
+                      temp.push(ingredient);
+                    }
+                    temp.splice(index, 1);
+                    props.setPickedIngredients(temp);
+                  }}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
       <button className={styles.nextButton} onClick={handleFindDrinks}>

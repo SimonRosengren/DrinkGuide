@@ -2,50 +2,48 @@
 @import '../../styles/sizes.scss';
 
 .wrapper {
-    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-top: $spacing-m;
-
-    .leftColumn {
-        text-align: center;
-        position: absolute;
-        top: 20vh;
-        left: 2vw;
-        height: 50vh;
-        width: 48vw;
-    }
-
-    .leftWrapper {
-        background-color: $color-secondary;
-        border-right: 1px solid $color-fifth;
+    padding: $spacing-s;
+    .barWrapper {
         display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: scroll;
-        padding: $spacing-s;
+        flex-direction: row;
+
+        .leftColumn {
+            text-align: center;
+            flex: 1;
+            height: 40vh;
+        }
+    
+        .leftWrapper {
+            background-color: $color-secondary;
+            border-right: 1px solid $color-fifth;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: scroll;
+            padding: $spacing-s;
+        }
+    
+    
+        .rightColumn {
+            text-align: center;
+            height: 40vh;
+            flex: 1;
+        }
+    
+        .rightWrapper {
+            display: flex;
+            flex-direction: column;
+            background-color: $color-secondary;
+            border-left: 1px solid $color-third;
+            height: 100%;
+            overflow: scroll;
+            padding: $spacing-s;
+        }
+    
     }
 
-
-    .rightColumn {
-        position: absolute;
-        top: 20vh;
-        right: 2vw;
-        width: 48vw;
-        height: 50vh;
-        text-align: center;       
-    }
-
-    .rightWrapper {
-        display: flex;
-        flex-direction: column;
-        background-color: $color-secondary;
-        border-left: 1px solid $color-third;
-        height: 100%;
-        overflow: scroll;
-        padding: $spacing-s;
-    }
 
     .nextButton {
         border: none;
@@ -53,8 +51,10 @@
         background-color: $color-sixth;
         color: $color-text;
         padding: $spacing-s;
-        top: 90vh;
-        position: absolute;
+        margin-top: 12rem;
+        align-self: center;
+        font-size: large;
+        
     }
 
 }
