@@ -3,6 +3,7 @@ import styles from "./drinkBrowser.module.scss";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import DrinkCard from "../../components/drinkCard/drinkCard";
+import './carousel.scss';
 
 function DrinkBrowser(props) {
   const [drinks, setDrinks] = useState([]);
@@ -22,7 +23,7 @@ function DrinkBrowser(props) {
   }, [props.pickedIngredients]);
 
   const getConfigurableProps = () => ({
-    showArrows: true,
+    showArrows: false,
     showStatus: false,
     showIndicators: false,
     infiniteLoop: true,
@@ -30,13 +31,15 @@ function DrinkBrowser(props) {
     useKeyboardArrows: true,
     swipeable: true,
     transitionTime: 150,
+    dynamicHeight: false,
+    swipeScrollTolerance: 5,
+    emulateTouch: true,
+    centerMode: true
   });
 
   return (
     <div className={styles.wrapper}>
       <Carousel
-        infiniteLoop
-        centerMode
         centerSlidePercentage={80}
         {...getConfigurableProps()}
       >

@@ -3,11 +3,10 @@ import styles from "./drinkCard.module.scss";
 
 function DrinkCard(props) {
   return (
-    <div class={styles.wrapper}>
+    <div className={styles.wrapper}>
       <h2 className={styles.title}>{props.drinkName}</h2>
-      <div>
+      <div className={styles.imageWrapper}>
         <img
-          className={styles.imageWrapper}
           src={props.image}
           alt={props.name}
         />

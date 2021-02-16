@@ -2,17 +2,17 @@
 @import '../../styles/sizes.scss';
 
 .wrapper {
+    display: flex;
+    flex-direction: column;
     .imageWrapper {
-        position: relative;
-        text-align: center;
-        
+        height: 20rem;
+        img {
+            height: 100%;
+            border-radius: 6px;
+        }
     }
-    .title {        
-        color: $color-third;
-        background-color: red($color: #000000);
-        
-    }
-    .description {
+    p {
+        margin-top: $spacing-s;
         font-size: large;
     }
 }
