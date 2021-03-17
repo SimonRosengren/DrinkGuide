@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./drinkBrowser.module.scss";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import DrinkCard from "../../components/drinkCard/drinkCard";
-import './carousel.scss';
 
 function DrinkBrowser(props) {
   const [drinks, setDrinks] = useState([]);
@@ -22,27 +22,17 @@ function DrinkBrowser(props) {
     loadDrinks();
   }, [props.pickedIngredients]);
 
-  const getConfigurableProps = () => ({
-    showArrows: false,
-    showStatus: false,
-    showIndicators: false,
-    infiniteLoop: true,
-    showThumbs: false,
-    useKeyboardArrows: true,
-    swipeable: true,
-    transitionTime: 150,
-    dynamicHeight: false,
-    swipeScrollTolerance: 5,
-    emulateTouch: true,
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     centerMode: true
-  });
-
+  };
   return (
     <div className={styles.wrapper}>
-      <Carousel
-        centerSlidePercentage={80}
-        {...getConfigurableProps()}
-      >
+      <Slider {...settings}>
         {drinks.map((d) => (
           <DrinkCard
             image={d.image.results[0].urls.regular}
@@ -50,7 +40,7 @@ function DrinkBrowser(props) {
             drinkDescription={d.description}
           />
         ))}
-      </Carousel>
+      </Slider>
     </div>
   );
 }
