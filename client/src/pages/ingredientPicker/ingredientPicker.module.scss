@@ -19,6 +19,7 @@
             background-color: $color-secondary;
             border-right: 1px solid $color-fifth;
             display: flex;
+            border-radius: 6px 0 0 6px;
             flex-direction: column;
             height: 100%;
             overflow: scroll;
@@ -40,6 +41,7 @@
             height: 100%;
             overflow: scroll;
             padding: $spacing-s;
+            border-radius: 0 6px 6px 0;
         }
     
     }
@@ -48,7 +50,7 @@
     .nextButton {
         border: none;
         border-radius: 6px;
-        background-color: $color-sixth;
+        background-color: $color-third;
         color: $color-text;
         padding: $spacing-s;
         margin-top: 12rem;
