@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 import styles from './drink.module.scss'
 import { useParams } from 'react-router-dom';
-import Recipe from '../../components/Recipe';
+import Recipe from '../../components/recipe';
 
 Drink.propTypes = {}
 

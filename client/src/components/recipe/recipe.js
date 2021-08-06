@@ -1,15 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './recipe.module.scss'
-
-Recipe.propTypes = {
-    drink: {
-        name: PropTypes.string,
-        description: PropTypes.string,
-        instructions: PropTypes.string,
-        ingredients: PropTypes.array,
-    }
-}
 
 export default function Recipe({drink}) {
     return(<div className='wrapper'>
