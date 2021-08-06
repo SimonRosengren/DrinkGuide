@@ -86,4 +86,9 @@ router.get('/batch', async (req, res, next) => {
   res.send(acceptedRecipes);
 })
 
+router.get('/', async (req, res) => {
+  let recipe = await Recipe.findById(req.query.uuid).exec();
+  res.json(recipe);
+})
+
 module.exports = router;
