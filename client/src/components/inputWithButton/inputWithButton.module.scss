@@ -6,6 +6,7 @@
     align-self: center;
     width: 100%;
     .input {
+        margin-left: $spacing-s;
         width: 100%;
         border-right: none;
         outline: none;
@@ -16,6 +17,7 @@
     }
     
     .button {
+        margin-right: $spacing-s;
         padding: $spacing-s;
         background-color: $color-third;
         border-left: none;

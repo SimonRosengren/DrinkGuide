@@ -2,7 +2,8 @@
 @import '../../styles/colors.scss';
 
 .wrapper {
-    background-color: $color-fourth;
+    background-color: $color-secondary;
+    margin-top: $spacing-l;
     .imageWrapper {
         height: 10rem;
     }
