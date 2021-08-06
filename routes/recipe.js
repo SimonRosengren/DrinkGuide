@@ -87,8 +87,18 @@ router.get('/batch', async (req, res, next) => {
 })
 
 router.get('/', async (req, res) => {
-  let recipe = await Recipe.findById(req.query.uuid).exec();
-  res.json(recipe);
+  const recipeDoc = await Recipe.findById(req.query.uuid).exec();
+  let ingredients = [];
+  for (let i = 0; i < recipeDoc.ingredients.length; i++) {
+    const ingredient = await Ingredient.findById(recipeDoc.ingredients[i]._id);
+    ingredients.push(ingredient)
+  }
+  res.json({
+    name: recipeDoc.name,
+    description: recipeDoc.description,
+    instructions: recipeDoc.instructions,
+    ingredients
+  })
 })
 
 module.exports = router;

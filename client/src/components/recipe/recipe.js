@@ -3,14 +3,23 @@ import PropTypes from 'prop-types'
 import styles from './recipe.module.scss'
 
 Recipe.propTypes = {
-    name: PropTypes.string,
-    description: PropTypes.string,
-    instructions: PropTypes.string,
-    ingredients: PropTypes.array,
+    drink: {
+        name: PropTypes.string,
+        description: PropTypes.string,
+        instructions: PropTypes.string,
+        ingredients: PropTypes.array,
+    }
 }
 
-export default function Recipe({name, description, instructions, ingredients}) {
-    <div>
-        {name}
-    </div>
+export default function Recipe({drink}) {
+    return(<div className='wrapper'>
+        <h2>{drink.name}</h2>
+        <h4>{drink.description}</h4>
+        <p>{drink.instructions}</p>
+        <ul>
+            {(drink.ingredients || []).map(ingredient => {
+                return <li>{ingredient.name}</li> // Ingredient links goes here
+            })}
+        </ul>
+    </div>);
 }
