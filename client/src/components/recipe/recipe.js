@@ -1,26 +1,16 @@
-import React, { useState } from "react";
-import "./recipe.scss";
+import React from 'react'
+import PropTypes from 'prop-types'
+import styles from "./recipe.module.scss";
 
-function Recipe(props) {
-//   const { onClick, text } = props;
-//   const [active, setActive] = useState(false);
-
-
-
-  return (
-    <div className="recipe__holder">
-        <div className="recipe__imageHolder">
-            <img src="https://i.pinimg.com/564x/5e/61/8f/5e618fd9e236032e31f09a33c884fbfb.jpg" />
-        </div>
-        <div className="recipe__title">
-            <h3>Level:3</h3>
-            <h3>A mocktail</h3>
-        </div>
-        <div className="recipe__instructions-wrapper">
-            <p className="recipe__instructions">Im instructions, </p>
-        </div>
-    </div>
-  );
+export default function Recipe({drink}) {
+    return(<div className={styles.wrapper}>
+        <h2>{drink.name}</h2>
+        <h4>{drink.description}</h4>
+        <p>{drink.instructions}</p>
+        <ul>
+            {(drink.ingredients || []).map(ingredient => {
+                return <li>{ingredient.name}</li> // Ingredient links goes here
+            })}
+        </ul>
+    </div>);
 }
-
-export default Recipe;

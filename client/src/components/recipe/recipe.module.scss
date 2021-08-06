@@ -1,0 +1,9 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.wrapper {
+    padding: $spacing-xl;
+    p {
+        font-size: larger;
+    }
+}

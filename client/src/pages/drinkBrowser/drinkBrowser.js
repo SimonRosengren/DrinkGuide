@@ -17,7 +17,6 @@ function DrinkBrowser(props) {
       let result = await fetch(url);
       result = await result.json();
       setDrinks(result);
-      console.log(result);
     };
     loadDrinks();
   }, [props.pickedIngredients]);
@@ -38,6 +37,7 @@ function DrinkBrowser(props) {
             image={d.image.results[0].urls.regular}
             drinkName={d.name}
             drinkDescription={d.description}
+            uuid={d._id}
           />
         ))}
       </Slider>

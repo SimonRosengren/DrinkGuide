@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/header/header";
 import IngredientForm from "./components/ingredientForm/ingredientForm";
 import IngredientPicker from "./pages/ingredientPicker/IngredientPicker";
+import Drink from './pages/Drink';
 import styles from "./App.module.scss";
 import DrinkBrowser from "./pages/drinkBrowser/drinkBrowser";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/add-recipe">
             <IngredientForm />
+          </Route>
+          <Route path="/drink/:uuid">
+            <Drink />
           </Route>
           <Route path="/">
             <IngredientPicker
