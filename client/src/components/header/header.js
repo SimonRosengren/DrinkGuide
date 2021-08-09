@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './header.module.scss';
 import Logo from '../logo/logo';
 import { useHistory } from "react-router-dom";
+import Menu from '../Menu'
 
 function Header() {
     const history = useHistory();
@@ -10,7 +11,8 @@ function Header() {
     }
     return (
         <div className={styles.header}>
-            <Logo onClick={handleLogoClick}/>
+            <Menu />
+            <Logo onClick={handleLogoClick}/ >
         </div>
     );
 }
