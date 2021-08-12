@@ -131,7 +131,7 @@ function IngredientForm(props) {
             </div>
           </div>
           <input type="text" name="qty" className="halfsize" value={qtyInput} onChange={e => setQtyInput(e.target.value)} />
-          <button onClick={() => { addIngredient() }}>add</button>
+          <button type="button" onClick={() => { addIngredient() }}>add</button>
         </div>
 
         <input type="submit" value="Submit" />
