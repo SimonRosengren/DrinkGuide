@@ -4,10 +4,16 @@
 
 .wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     font-family: 'Spartan', sans-serif;
     color: $color-text;
+}
+
+#innerWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -3px;
 }
 
 .icon {
