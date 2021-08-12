@@ -4,7 +4,6 @@
 body {
    margin: 0;
    padding: 0;
-   
    /* make it look decent enough */
    background: $color-text;
    font-family: "Avenir Next", "Avenir", sans-serif;
@@ -16,7 +15,6 @@ body {
    top: 16px;
    left: 16px; 
    z-index: 1;
-   
    -webkit-user-select: none;
    user-select: none;
  }
@@ -92,7 +90,7 @@ body {
  #menuToggle input:checked ~ span
  {
    opacity: 1;
-   transform: rotate(45deg) translate(-2px, -1px);
+   transform: rotate(45deg) translate(-2px, 0px);
    background: #232323;
  }
  
@@ -120,7 +118,8 @@ body {
  #menu
  {
    position: absolute;
-   width: 100px;
+   border-radius: 6px;
+   width: 150px;
    margin: -100px 0 0 -50px;
    padding: 50px;
    padding-top: 125px;

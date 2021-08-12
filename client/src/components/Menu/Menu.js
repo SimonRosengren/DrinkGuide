@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import styles from './menu.module.scss'
 import MenuItem from '../MenuItem'
 
-
 Menu.propTypes = {
 }
 
@@ -35,18 +34,16 @@ export default function Menu({ }) {
 
     return (
         <nav role="navigation" ref={menuContainer}>
-          <div id={styles.menuToggle}>
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul id={styles.menu}>
-              <a href="#"><li>Home</li></a>
-              <a href="#"><li>About</li></a>
-              <a href="#"><li>Info</li></a>
-              <a href="#"><li>Contact</li></a>
-              <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
-            </ul>
-          </div>
+            <div id={styles.menuToggle}>
+                <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id={styles.menu}>
+                    <a href="#"><li>Login</li></a>
+                    <a href="/add-recipe"><li>Add drink</li></a>
+                    <a href="#"><li>About</li></a>
+                </ul>
+            </div>
         </nav>)
 }
