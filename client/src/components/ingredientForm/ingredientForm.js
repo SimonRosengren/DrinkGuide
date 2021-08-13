@@ -67,7 +67,7 @@ function IngredientForm(props) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.formWrapper}>
-        <form onSubmit={handleSubmit}>
+        <div className={styles.innerFormWrapper}>
           <div className={styles.inputWrapper}>
             <label for="name">Name</label>
             <input
@@ -136,11 +136,20 @@ function IngredientForm(props) {
             </div>
             <button type="button" className={styles.addIngredientButton} onClick={() => { addIngredient() }}>+</button>
           </div>
-          <input type="submit" value="Submit" />
-        </form>
+        </div>
       </div>
-      <div className={styles.previewWrapper}>
-
+      <div className={styles.preview}>
+        <div className={styles.previewWrapper}>
+          <div>
+            <h4>Recipe</h4>
+            <ul>
+              {ingredients.map(i => {
+                return <li>{i.name} {i.qtyInput}</li>
+              })}
+            </ul>
+          </div>
+        </div>
+        <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

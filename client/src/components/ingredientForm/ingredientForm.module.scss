@@ -2,10 +2,9 @@
 @import '../../styles/sizes.scss';
 
 .formWrapper {
-    border: 1px solid red;
     display: flex;
     padding: 0 $spacing-l;
-    form {
+    .innerFormWrapper {
         width: 100%;
     }
     .inputWrapper {
@@ -66,8 +65,36 @@ ul {
     color: $color-text;
     font-weight: 900;
     font-size: 1.2rem;
+    border-radius: 2px;
 }
-.previewWrapper {
-    height: 40vh;
-    border: 1px solid black;
+.preview {
+    .previewWrapper {
+        height: 25vh;
+        text-align: center;
+        border-left: 1px solid $color-text;
+        border-right: 1px solid $color-text;
+        border-top: 1px solid $color-text;
+        margin: $spacing-s $spacing-l 0 $spacing-l;
+        padding: $spacing-s;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        h4 {
+            margin: 0;
+        }
+    }
+}
+.previewWrapper::-webkit-scrollbar {
+    display: none;
+}
+.submitButton {
+    border: none;
+    padding: .4rem;
+    margin: 0;
+    background-color: $color-third;
+    color: $color-text;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 2px;
+    margin: 0 $spacing-l;
 }
