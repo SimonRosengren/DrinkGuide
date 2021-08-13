@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./ingredientForm.scss";
+import styles from "./ingredientForm.module.scss";
+import IngredientSuggestionCard from "./ingredientSuggestionCard";
 
 function IngredientForm(props) {
   const [recipeName, setRecipeName] = useState("");
@@ -37,10 +38,10 @@ function IngredientForm(props) {
 
   const addIngredient = () => {
     let temp = ingredients;
-    temp.push({ 
-        qtyInput,
-        ...currentIngredient
-     });
+    temp.push({
+      qtyInput,
+      ...currentIngredient
+    });
     setIngredients(temp);
     setIngredientInput("");
     setQtyInput("")
@@ -51,91 +52,96 @@ function IngredientForm(props) {
     e.preventDefault();
     console.log(recipeName)
     const result = await fetch(`/api/recipe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            name: recipeName,
-            description,
-            instructions,
-            ingredients
-        })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: recipeName,
+        description,
+        instructions,
+        ingredients
+      })
     })
-    
+
   };
 
   return (
-    <div className="formContainer">
-      <form onSubmit={handleSubmit}>
-        <div className="inputWrapper">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            className="fullsize"
-            value={recipeName}
-            onChange={(e) => {
-              setRecipeName(e.target.value);
-            }}
-          />
-        </div>
-
-        <div className="inputWrapper">
-          <label for="description">Description</label>
-          <textarea
-            type="text"
-            name="description"
-            className="fullsize"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-        </div>
-
-        <div className="inputWrapper">
-          <label for="instructions">Instructions</label>
-          <textarea
-            type="text"
-            name="instructions"
-            className="fullsize"
-            value={instructions}
-            onChange={(e) => {
-              setInstructions(e.target.value);
-            }}
-          />
-        </div>
-
-        <div className="ingredientWrapper">
-          <div className="suggestionWrapper">
-            <div className="inputWrapper">
-              <label for="ingredients">Ingredients</label>
-              <input
-                type="text"
-                name="ingredients"
-                className="halfsize"
-                value={ingredientInput}
-                onChange={(e) => {
-                  suggestIngredients(e);
-                }}
-              />
-            </div>
-
-            <div className="inputWrapper">
-              <ul className="halfsize">
-                {suggestions.map((s, index) => (
-                  <li key={index} onClick={handleIngredientsInput}>
-                    {s.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <div className={styles.wrapper}>
+      <div className={styles.formWrapper}>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.inputWrapper}>
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              className="fullsize"
+              value={recipeName}
+              onChange={(e) => {
+                setRecipeName(e.target.value);
+              }}
+            />
           </div>
-          <input type="text" name="qty" className="halfsize" value={qtyInput} onChange={e => setQtyInput(e.target.value)} />
-          <button type="button" onClick={() => { addIngredient() }}>add</button>
-        </div>
 
-        <input type="submit" value="Submit" />
-      </form>
+          <div className={styles.inputWrapper}>
+            <label for="description">Description</label>
+            <textarea
+              type="text"
+              name="description"
+              className="fullsize"
+              value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
+          </div>
+
+          <div className={styles.inputWrapper}>
+            <label for="instructions">Instructions</label>
+            <textarea
+              type="text"
+              name="instructions"
+              className="fullsize"
+              value={instructions}
+              onChange={(e) => {
+                setInstructions(e.target.value);
+              }}
+            />
+          </div>
+
+          <div className={styles.ingredientsWrapper}>
+            <div className={styles.ingredinetAreaWrapper}>
+              <div className={styles.ingredientInputWrapper}>
+                <div className={styles.inputWrapper}>
+                  <label for="ingredients">Ingredients</label>
+                  <input
+                    type="text"
+                    name="ingredients"
+                    value={ingredientInput}
+                    onChange={(e) => {
+                      suggestIngredients(e);
+                    }}
+                  />
+                </div>
+                <div className={styles.inputWrapper}>
+                  <label for="qty">Amount</label>
+                  <input type="text" name="qty" value={qtyInput} onChange={e => setQtyInput(e.target.value)} />
+                </div>
+              </div>
+              <div className={styles.suggestionsWrapper}>
+                <ul>
+                  {suggestions.map((s, index) => (
+                    <IngredientSuggestionCard key={index} text={s.name} handleIngredientsInput={handleIngredientsInput} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <button type="button" className={styles.addIngredientButton} onClick={() => { addIngredient() }}>+</button>
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+      <div className={styles.previewWrapper}>
+
+      </div>
     </div>
   );
 }

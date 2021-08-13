@@ -1,0 +1,73 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.formWrapper {
+    border: 1px solid red;
+    display: flex;
+    padding: 0 $spacing-l;
+    form {
+        width: 100%;
+    }
+    .inputWrapper {
+        padding-bottom: $spacing-xs;
+        display: flex;
+        flex-direction: column;
+        input {
+            border: none;
+            outline: none;
+            padding: .4rem;
+            border-radius: 2px;
+        }
+        textarea {
+            border: none;
+            outline: none;
+            padding: .4rem;
+            border-radius: 2px;
+            resize: none;
+        }
+    }
+    .ingredientsWrapper {
+        display: flex;
+        flex-direction: column;
+        .ingredinetAreaWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .ingredientInputWrapper {
+                display: flex;
+                flex-direction: column;
+                width: 48%;
+            }
+            .suggestionsWrapper {
+                width: 48%;
+                max-height: 6rem;
+                padding-top: .4rem;
+                overflow: scroll;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .suggestionsWrapper::-webkit-scrollbar {
+                display: none;
+            }
+        }
+        .halfwidth {width: 50%;}
+        }
+    }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.addIngredientButton {
+    border: none;
+    padding: .4rem;
+    margin: .3rem 0;
+    background-color: $color-third;
+    color: $color-text;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+.previewWrapper {
+    height: 40vh;
+    border: 1px solid black;
+}
