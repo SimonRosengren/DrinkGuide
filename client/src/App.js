@@ -5,6 +5,7 @@ import IngredientPicker from "./pages/ingredientPicker/IngredientPicker";
 import Drink from './pages/Drink';
 import styles from "./App.module.scss";
 import DrinkBrowser from "./pages/drinkBrowser/drinkBrowser";
+import Signup from "./pages/signup/signup";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route path="/drink/:uuid">
             <Drink />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/">
             <IngredientPicker
