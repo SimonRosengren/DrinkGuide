@@ -6,6 +6,7 @@ import Drink from './pages/Drink';
 import styles from "./App.module.scss";
 import DrinkBrowser from "./pages/drinkBrowser/drinkBrowser";
 import Signup from "./pages/signup/signup";
+import Signin from "./pages/signin/signin";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AuthProvider from "./contexts/AuthContext";
 
@@ -29,6 +30,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <Signup />
+            </Route>
+            <Route path="/signin">
+              <Signin />
             </Route>
             <Route path="/">
               <IngredientPicker

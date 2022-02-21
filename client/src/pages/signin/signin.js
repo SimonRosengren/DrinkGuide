@@ -2,11 +2,10 @@ import React, { useRef, useState } from 'react';
 import { Form, Card, Button, Container, Spinner, Alert } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 
-function Signup() {
+function Signin() {
     const passwordRef = useRef()
-    const repeatPasswordRef = useRef()
     const emailRef = useRef()
-    const { signup, currentUser } = useAuth()
+    const { signin, currentUser } = useAuth()
 
     const [loading, setLoading] = useState(false)
     const [alertFailure, setAlertFailure] = useState(false)
@@ -16,7 +15,7 @@ function Signup() {
         e.preventDefault()
         setLoading(true)
         let success;
-        if (!loading) success = await signup(emailRef.current.value, passwordRef.current.value)
+        if (!loading) success = await signin(emailRef.current.value, passwordRef.current.value)
         setLoading(false)
         if (!success) {
             setAlertFailure(true)
@@ -28,7 +27,7 @@ function Signup() {
             <Container>
                 <Card>
                     <Card.Body>
-                        <h2 className='text-center mb-4'>Sign up</h2>
+                        <h2 className='text-center mb-4'>Sign in</h2>
                         <Form onSubmit={handleSubmit}>
                             <Form.Group id='email'>
                                 <Form.Label>Email</Form.Label>
@@ -37,10 +36,6 @@ function Signup() {
                             <Form.Group id='password'>
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type='password' ref={passwordRef} required />
-                            </Form.Group>
-                            <Form.Group id='passwordRepeat'>
-                                <Form.Label>Repeat password</Form.Label>
-                                <Form.Control type='password' ref={repeatPasswordRef} required />
                             </Form.Group>
                             <Button disabled={loading} type="submit" className='w-100'>{!loading ? 'Sign up' :
                                 <Spinner animation="border" role="status">
@@ -65,4 +60,4 @@ function Signup() {
     );
 }
 
-export default Signup;
+export default Signin;
