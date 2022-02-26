@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import config from '../firebase'
 import { initializeApp } from 'firebase/app'
+import { useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 const AuthContext = React.createContext() 
 export function useAuth() {
@@ -9,12 +10,15 @@ export function useAuth() {
 
 function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
+    const [loading, setLoading] = useState(true);
+    const history = useHistory()
 
     useEffect(() => {
         initializeApp(config)
         const auth = getAuth()
         const unsubscriber = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user)
+            setLoading(false)
         })
 
         return unsubscriber
@@ -44,10 +48,10 @@ function AuthProvider({ children }) {
     const signout = async () => {
         const auth = getAuth()
         try {
-            const result = await signOut()
-            return true
+            const result = await signOut(auth)
+            history.push('/')
         } catch (error) {
-            return false
+            // Do something
         }
     }
 
@@ -55,12 +59,12 @@ function AuthProvider({ children }) {
         currentUser,
         signup,
         signin,
-        signOut
+        signout
     }
 
     return (
         <AuthContext.Provider value={value}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     )
 }
