@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styles from './menu.module.scss'
 import MenuItem from '../MenuItem'
+import { useAuth } from '../../contexts/AuthContext'
 
 Menu.propTypes = {
 }
@@ -9,6 +10,7 @@ Menu.propTypes = {
 export default function Menu({ }) {
     const [showMenu, setShowMenu] = useState(false);
     const menuContainer = useRef(null);
+    const { currentUser } = useAuth()
 
     useEffect(() => {
         const handleEsc = (event) => {
@@ -40,7 +42,7 @@ export default function Menu({ }) {
                 <span></span>
                 <span></span>
                 <ul id={styles.menu}>
-                    <a href="#"><li>Login</li></a>
+                    {currentUser && currentUser.email ? <li>Logout</li> : <a href="signin"><li>Login</li></a>}
                     <a href="/add-recipe"><li>Add drink</li></a>
                     <a href="#"><li>About</li></a>
                 </ul>
