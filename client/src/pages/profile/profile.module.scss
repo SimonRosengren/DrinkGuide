@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.info {
+    width: 30%;
+    padding: 1rem;
+    border-right: 1px solid black;
+}
+.main {
+    width: 100%;
+    padding: 1rem;
+}

@@ -22,7 +22,7 @@ function App() {
       <div className={styles.app}>
         <AuthProvider>
           <Header />
-          <Container>
+          <div className={styles.appBody}>
             <Switch>
               <Route path="/browse">
                 <DrinkBrowser pickedIngredients={pickedIngredients} />
@@ -47,7 +47,7 @@ function App() {
                 />
               </Route>
             </Switch>
-          </Container>
+          </div>
         </AuthProvider>
       </div>
     </Router>
