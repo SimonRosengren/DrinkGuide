@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "./components/header/header";
+import Header from "./components/header/Header";
 import IngredientForm from "./components/ingredientForm/ingredientForm";
 import IngredientPicker from "./pages/ingredientPicker/IngredientPicker";
 import Drink from './pages/Drink';

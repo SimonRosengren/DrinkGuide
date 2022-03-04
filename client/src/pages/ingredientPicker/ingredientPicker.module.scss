@@ -24,6 +24,12 @@
             height: 100%;
             overflow: scroll;
             padding: $spacing-s;
+
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            ::-webkit-scrollbar {
+                display: none;
+            }
         }
     
     
@@ -42,6 +48,13 @@
             overflow: scroll;
             padding: $spacing-s;
             border-radius: 0 6px 6px 0;
+
+            // Hide scroll bar
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            ::-webkit-scrollbar {
+                display: none;
+            }
         }
     
     }

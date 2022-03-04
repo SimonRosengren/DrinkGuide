@@ -1,42 +1,99 @@
-@import "../../styles/colors.scss";
-@import "../../styles/sizes.scss";
+@import 'src/styles/colors.scss';
+@import 'src/styles/sizes.scss';
 
 .header {
-  background-color: $color-secondary;
-  padding: $spacing-xs 0;
-  box-sizing: border-box;
-  padding-top: .5rem;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+  justify-content: space-between;
+  z-index: 2;
+  transition: top 0.5s;
+  padding: $spacing-m $spacing-m;
 
-.hamburger {
-  color: $color-text;
-  border: none;
-  background-color: transparent;
-  span {
-    display: block;
-    width: 25px;
-    height: 2px;
-    margin-bottom: 5px;
-    position: relative;
-    background: $color-text;
-    border-radius: 3px;
+  .navigationButton {
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+
+    .navigationIcon {
+      position: relative;
+      margin-top: 0.8rem;
+      &,
+      &::before,
+      &::after {
+        width: 2rem;
+        height: 2px;
+        background-color: $color-text;
+        display: inline-block;
+      }
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        transition: all 0.2s;
+      }
+      &::before {
+        top: -0.8rem;
+        transform-origin: center;
+      }
+      &::after {
+        top: 0.8rem;
+      }
+    }
   }
-}
 
+  .navigationCheckbox {
+    display: none;
+    position: absolute;
+    right: 16px;
 
-.menu {
-  background: $color-text;
-  font-family: "Avenir Next", "Avenir", sans-serif;
-  text-align: center;
-  a {
+    &:checked + .navigationButton .navigationIcon {
+      background: transparent;
+    }
+
+    &:checked + .navigationButton .navigationIcon::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &:checked + .navigationButton .navigationIcon::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+
+  .menuNavigation {
+    box-shadow: -2px 0px 3px 0px rgba(0, 0, 0, 0.37);
+    height: 100%;
+    width: 80vw;
+    max-width: 450px;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: -450px;
+    background-color: $color-logo;
+    overflow-x: hidden;
+    padding-top: 8rem;
+    transition: 0.6s;
+    text-transform: uppercase;
+    text-align: center;
+    ul {
+      line-height: 4rem;
+    }
+  }
+
+  .menuItem {
+    color: $color-text;
     text-decoration: none;
-    color: #232323;
+    font-size: x-large;
+    padding: 0.5rem;
   }
-  a:hover {
-    background-color: tomato;
-    color: #232323;
+
+  .menuItem:hover {
+    border: 3px solid $color-third;
+  }
+
+  .menuVisible {
+    right: 0;
+    transition: 0.6s;
   }
 }
