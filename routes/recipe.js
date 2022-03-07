@@ -7,6 +7,7 @@ const Joi = require("joi");
 const ApiError = require("../utils/ApiError");
 const fetch = require('node-fetch');
 const config = require('../lib/config');
+const authHandler = require('../middleware/authHandler')
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -45,7 +46,7 @@ const checkIfIngredientsExist = (ingredients) => {
 }
 
 
-router.get('/batch', async (req, res, next) => {
+router.get('/batch', authHandler, async (req, res, next) => {
   let ingredients = req.query.ingredients;
   if (!Array.isArray(ingredients)) {
     const temp = [];
