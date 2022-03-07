@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Logo from '../logo/logo';
-import styles from './Header.module.scss';
+import styles from './header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 
