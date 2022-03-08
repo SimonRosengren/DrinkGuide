@@ -9,6 +9,7 @@ const fetchWithAuth = async (url, request, idToken) => {
     }
     console.log(JSON.stringify(request))
     const response = await fetch(url, {
+        redirect: 'follow',
         ...request
     })
     return response

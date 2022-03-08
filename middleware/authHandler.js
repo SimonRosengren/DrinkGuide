@@ -1,12 +1,16 @@
-const { initializeApp, cert } = require('firebase-admin/app')
+const firebase = require('../utils/firebase')
 const { getAuth } = require('firebase-admin/auth')
-const config = require('../lib/config')
-
-
 module.exports = async (req, res, next) => {
-    const idToken = req.headers.authorization
-    const app = initializeApp({ credential: cert(config.firebase) })
-    const decodedToken = await getAuth(app).verifyIdToken(idToken)
-    const tets = decodedToken
+    let idToken = req.headers.authorization
+    if (idToken.split(' ')[0] !== 'Bearer') return res.redirect(401, '/login')
+    idToken = idToken.split(' ')[1]
+    let decodedToken;
+    try {
+        const app = firebase.app()
+        decodedToken = await getAuth(app).verifyIdToken(idToken)
+    } catch (error) {
+        return res.redirect(401, '/signin')
+    }
+    if (!decodedToken.email) return res.redirect(401, '/login')
     next()
 }
