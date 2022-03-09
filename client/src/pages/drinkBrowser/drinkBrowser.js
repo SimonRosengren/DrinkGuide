@@ -4,16 +4,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DrinkCard from "../../components/drinkCard/drinkCard";
+import { useAuth } from '../../contexts/AuthContext'
+
 
 function DrinkBrowser(props) {
   const [drinks, setDrinks] = useState([]);
-
+  const { currentUser } = useAuth()
+  
   useEffect(() => {
     const loadDrinks = async () => {
       var url = "/api/recipe/batch?";
       for (const ingredient of props.pickedIngredients || []) {
         url = `${url}&ingredients=${ingredient._id}`;
       }
+      const idToken = await currentUser.getIdToken()
       let result = await fetch(url);
       result = await result.json();
       setDrinks(result);
