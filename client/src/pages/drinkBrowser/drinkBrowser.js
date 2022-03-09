@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DrinkCard from "../../components/drinkCard/drinkCard";
-import fetchWithAuth from "../../services/requestService"
 import { useAuth } from '../../contexts/AuthContext'
 
 
@@ -19,7 +18,7 @@ function DrinkBrowser(props) {
         url = `${url}&ingredients=${ingredient._id}`;
       }
       const idToken = await currentUser.getIdToken()
-      let result = await fetchWithAuth(url, {}, idToken);
+      let result = await fetch(url);
       result = await result.json();
       setDrinks(result);
     };
