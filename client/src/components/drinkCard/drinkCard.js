@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./drinkCard.module.scss";
 import { useHistory } from "react-router-dom";
+import { BiUpvote, BiDownvote } from "react-icons/bi";
+import Downvote from '../vote/downvote'
+
 function DrinkCard(props) {
   const history = useHistory();
   const handleClick = () => {
@@ -15,6 +18,7 @@ function DrinkCard(props) {
       <div className={styles.textWrapper}>
         <h2 className={styles.title}>{props.drinkName}</h2>
         <p className={styles.description}>{props.drinkDescription}</p>
+        <h4><Downvote id={props.uuid} active={false} /> 0 <BiDownvote /></h4>
       </div>
     </div>
   );
