@@ -15,7 +15,7 @@ function Profile() {
         <div className={styles.wrapper}>
             <div className={styles.info}>
                 <Image src='https://i0.wp.com/www.judecoram.com/wp-content/uploads/2018/08/Low-Poly-Red-Panda.jpg?w=700&ssl=1' roundedCircle={true} fluid={true} />
-                <h2>Simon</h2>
+                <h2>{currentUser.displayName}</h2>
                 <h4>{currentUser.email}</h4>
 
 

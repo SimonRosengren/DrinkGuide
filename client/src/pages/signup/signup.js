@@ -7,6 +7,7 @@ function Signup() {
     const passwordRef = useRef()
     const repeatPasswordRef = useRef()
     const emailRef = useRef()
+    const displayNameRef = useRef()
     const { signup, currentUser } = useAuth()
     const history = useHistory()
     const [loading, setLoading] = useState(false)
@@ -17,7 +18,7 @@ function Signup() {
         e.preventDefault()
         setLoading(true)
         let success;
-        if (!loading) success = await signup(emailRef.current.value, passwordRef.current.value)
+        if (!loading) success = await signup(emailRef.current.value, displayNameRef.current.value, passwordRef.current.value)
         setLoading(false)
         if (!success) {
             setAlertFailure(true)
@@ -32,6 +33,10 @@ function Signup() {
                 <Card.Body>
                     <h2 className='text-center mb-4'>Sign up</h2>
                     <Form onSubmit={handleSubmit}>
+                        <Form.Group id='displayName'>
+                            <Form.Label>Display name</Form.Label>
+                            <Form.Control type='text' ref={displayNameRef} required />
+                        </Form.Group>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>
                             <Form.Control type='email' ref={emailRef} required />

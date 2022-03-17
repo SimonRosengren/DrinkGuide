@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import config from '../firebase'
 import { initializeApp } from 'firebase/app'
 import { useHistory } from 'react-router-dom'
-import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 const AuthContext = React.createContext() 
 export function useAuth() {
     return useContext(AuthContext)
@@ -25,10 +25,11 @@ function AuthProvider({ children }) {
     }, [])
 
     // TODO: Handle this better
-    const signup = async (email, password) => {
+    const signup = async (email, displayName, password) => {
         const auth = getAuth()
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password)
+            const test = await updateProfile(getAuth().currentUser, { displayName: displayName })
             return true
         } catch (error) {
             return false

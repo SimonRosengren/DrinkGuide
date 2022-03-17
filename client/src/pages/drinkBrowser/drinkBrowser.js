@@ -38,10 +38,7 @@ function DrinkBrowser(props) {
       <Slider {...settings}>
         {drinks.map((d) => (
           <DrinkCard
-            image={d.image.results[0].urls.regular}
-            drinkName={d.name}
-            drinkDescription={d.description}
-            uuid={d._id}
+            drink={d}
           />
         ))}
       </Slider>

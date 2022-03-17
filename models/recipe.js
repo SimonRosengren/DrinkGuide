@@ -4,6 +4,7 @@ const schema = new mongoose.Schema({
     name: String,
     description: String,
     instructions: String,
+    score: { type: Number, default: 0 },
     ingredients: [{
         id: String,
         qty: Number,
