@@ -11,4 +11,5 @@ router.post('/', authHandler, async (req, res, next) => {
     res.send(200)
 });
 
+
 module.exports = router;
