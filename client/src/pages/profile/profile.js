@@ -1,11 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './profile.module.scss'
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import { Form, Card, Button, Container, Spinner, Alert, Image, Breadcrumb } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
+import fetchWithAuth from '../../services/requestService';
 function Profile() {
 
     const { currentUser, signout } = useAuth()
+    const [currentUserInfo, setCurrentUserInfo] = useState({})
+
+    useEffect(async () => {
+        const userInfo = await fetchWithAuth('/api/user')
+        setCurrentUserInfo(userInfo)
+      }, []);
 
     const handleSignout = async () => {
         await signout()
@@ -24,7 +31,7 @@ function Profile() {
             </div>
             <div className={styles.main}>
                 <Router>
-                    <NavLink to='/profile/one' replace>One</NavLink>
+                    <NavLink to='/profile/one' replace>{JSON.stringify(currentUserInfo)}</NavLink>
                     <NavLink to='/profile/two' replace>Twe</NavLink>
 
                     <Route path="/profile/one" render={() => <div>Home</div>} />

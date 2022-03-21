@@ -7,6 +7,8 @@ function Signup() {
     const passwordRef = useRef()
     const repeatPasswordRef = useRef()
     const emailRef = useRef()
+    const firstNameRef = useRef()
+    const surNameRef = useRef()
     const displayNameRef = useRef()
     const { signup, currentUser } = useAuth()
     const history = useHistory()
@@ -36,6 +38,14 @@ function Signup() {
                         <Form.Group id='displayName'>
                             <Form.Label>Display name</Form.Label>
                             <Form.Control type='text' ref={displayNameRef} required />
+                        </Form.Group>
+                        <Form.Group id='firstName'>
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control type='text' ref={firstNameRef} required />
+                        </Form.Group>
+                        <Form.Group id='surName'>
+                            <Form.Label>Surname</Form.Label>
+                            <Form.Control type='text' ref={surNameRef} required />
                         </Form.Group>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>
