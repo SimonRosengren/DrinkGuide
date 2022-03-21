@@ -10,7 +10,6 @@ function Profile() {
     const [currentUserInfo, setCurrentUserInfo] = useState({})
 
     useEffect(() => {
-        console.log('Hello world!')
         const fetchUserInfo = async () => { 
             const userInfo = await (await fetchWithAuth('/api/user')).json()
             setCurrentUserInfo(userInfo)

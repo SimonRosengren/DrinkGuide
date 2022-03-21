@@ -3,7 +3,7 @@ import { BiUpvote } from "react-icons/bi";
 import React, { useState } from 'react'
 import fetchWithAuth from '../../services/requestService'
 function Upvote(props) {
-    const { objId } = props
+    const { id } = props
     const [active, setActive] = useState(!!props.active)
 
     const handleClick = async e => {
@@ -14,7 +14,7 @@ function Upvote(props) {
             method: 'POST',
             body: JSON.stringify({
                 vote: 'up',
-                id: objId
+                id
             })
         })
     }

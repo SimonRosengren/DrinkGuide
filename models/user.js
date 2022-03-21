@@ -4,7 +4,8 @@ const schema = new mongoose.Schema({
     firstName: String,
     surName: String,
     firebaseID: { type: String, required: true, unique: true },
-    likedDrinks: [{ id: String }],
+    likedDrinks: [String],
+    dislikedDrinks: [String],
     bar: [{ id: String }]
 })
 const User = mongoose.model('User', schema);

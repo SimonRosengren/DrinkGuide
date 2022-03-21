@@ -12,6 +12,6 @@ module.exports = async (req, res, next) => {
         return res.send(401)
     }
     if (!decodedToken.email) return res.send(401)
-    req.userId = decodedToken.uid
+    req.firebaseID = decodedToken.uid
     next()
 }
