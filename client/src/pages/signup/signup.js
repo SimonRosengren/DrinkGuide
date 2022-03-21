@@ -20,7 +20,7 @@ function Signup() {
         e.preventDefault()
         setLoading(true)
         let success;
-        if (!loading) success = await signup(emailRef.current.value, displayNameRef.current.value, passwordRef.current.value)
+        if (!loading) success = await signup(emailRef.current.value, displayNameRef.current.value, firstNameRef.current.value, surNameRef.current.value, passwordRef.current.value)
         setLoading(false)
         if (!success) {
             setAlertFailure(true)

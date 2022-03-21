@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
     firstName: String,
     surName: String,
-    firebaseId: { type: String, required: true, unique: true },
+    firebaseID: { type: String, required: true, unique: true },
     likedDrinks: [{ id: String }],
     bar: [{ id: String }]
 })

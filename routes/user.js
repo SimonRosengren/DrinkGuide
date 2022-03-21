@@ -13,7 +13,7 @@ router.post('/create', authHandler, async (req, res) => {
 
 router.get('/', authHandler, async (req, res) => {
     if (!req.userId) return req.send(401)
-    const user = User.findOne({ firebaseId: req.userId })
+    const user = await User.findOne({ firebaseID: req.userId }).exec()
     res.send(user)
 });
 

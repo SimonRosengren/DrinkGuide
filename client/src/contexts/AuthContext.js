@@ -32,15 +32,16 @@ function AuthProvider({ children }) {
         const auth = getAuth()
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password)
+            await updateProfile(getAuth().currentUser, { displayName: displayName })
             await fetchWithAuth('/api/user/create', {
+                headers: { 'Content-Type': 'application/json' },
                 method: 'POST',
-                body: {
+                body: JSON.stringify({
                     firstName,
                     surName,
                     firebaseID: result.user.uid
-                }
+                })
             })
-            await updateProfile(getAuth().currentUser, { displayName: displayName })
             return true
         } catch (error) {
             return false

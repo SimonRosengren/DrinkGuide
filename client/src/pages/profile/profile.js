@@ -9,9 +9,13 @@ function Profile() {
     const { currentUser, signout } = useAuth()
     const [currentUserInfo, setCurrentUserInfo] = useState({})
 
-    useEffect(async () => {
-        const userInfo = await fetchWithAuth('/api/user')
-        setCurrentUserInfo(userInfo)
+    useEffect(() => {
+        console.log('Hello world!')
+        const fetchUserInfo = async () => { 
+            const userInfo = await (await fetchWithAuth('/api/user')).json()
+            setCurrentUserInfo(userInfo)
+        }
+        fetchUserInfo()
       }, []);
 
     const handleSignout = async () => {
@@ -24,6 +28,7 @@ function Profile() {
                 <Image src='https://i0.wp.com/www.judecoram.com/wp-content/uploads/2018/08/Low-Poly-Red-Panda.jpg?w=700&ssl=1' roundedCircle={true} fluid={true} />
                 <h2>{currentUser.displayName}</h2>
                 <h4>{currentUser.email}</h4>
+                <h4>efternamn: {currentUserInfo.surName}</h4>
 
 
 
@@ -31,7 +36,7 @@ function Profile() {
             </div>
             <div className={styles.main}>
                 <Router>
-                    <NavLink to='/profile/one' replace>{JSON.stringify(currentUserInfo)}</NavLink>
+                    <NavLink to='/profile/one' replace>one</NavLink>
                     <NavLink to='/profile/two' replace>Twe</NavLink>
 
                     <Route path="/profile/one" render={() => <div>Home</div>} />
