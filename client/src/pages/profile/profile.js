@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-rou
 import { Form, Card, Button, Container, Spinner, Alert, Image, Breadcrumb } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 import fetchWithAuth from '../../services/requestService';
+import DrinkList from '../../components/drinkList/drinkList';
 function Profile() {
 
     const { currentUser, signout } = useAuth()
@@ -35,11 +36,11 @@ function Profile() {
             </div>
             <div className={styles.main}>
                 <Router>
-                    <NavLink to='/profile/one' replace>one</NavLink>
+                    <NavLink to='/profile/liked-drinks' replace>Liked drinks</NavLink>
                     <NavLink to='/profile/two' replace>Twe</NavLink>
 
-                    <Route path="/profile/one" render={() => <div>Home</div>} />
-                    <Route path='/profile/two'><h2>Two</h2></Route>
+                    <Route path="/profile/liked-drinks"><DrinkList ids={currentUserInfo.likedDrinks} /></Route>
+                    <Route path='/profile/two'>{JSON.stringify(currentUserInfo)}</Route>
                     <Route path='/profile/three'><h2>Three</h2></Route>
                 </Router>
             </div>
