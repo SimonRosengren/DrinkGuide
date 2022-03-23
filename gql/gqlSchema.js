@@ -59,15 +59,6 @@ const RootQuery = new GraphQLObjectType({
                 return result;
             }
         }
-
-        // SoilMoistures: {
-        //     type: GraphQLList(DrinkType),
-        //     args: { limit: { type: GraphQLInt } },
-        //     async resolve(parent, args) {
-        //         const result = await SoilMoisture.find({}).sort({ date: -1 }).limit(args.limit);
-        //         return result;
-        //     }
-        // }
     }
 })
 

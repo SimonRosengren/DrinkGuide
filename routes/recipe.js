@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
     const validation = await schema.validateAsync(
       { name, description, instructions, ingredients }
     );
-    if (validation.error) 
+    if (validation.error)
       throw new ApiError(400, "Wrong parameters", validation.error);
     if (!checkIfIngredientsExist(ingredients))
       throw new ApiError(400, "One or more ingredients does not exist"); // TODO: Why is not message returned?
@@ -99,6 +99,18 @@ router.get('/', async (req, res) => {
     instructions: recipeDoc.instructions,
     ingredients
   })
+})
+
+router.post('/manybyids', async (req, res) => {
+  const ids = req.body.ids || []
+  const result = await Recipe.find({ '_id': { $in: ids } }).exec()
+  const response = result.map(d => {
+    return {
+      name: d.name,
+      score: d.score
+    }
+  })
+  res.json(response)
 })
 
 module.exports = router;
