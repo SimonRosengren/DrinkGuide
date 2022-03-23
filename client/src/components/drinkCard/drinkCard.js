@@ -10,7 +10,7 @@ function DrinkCard(props) {
   const [tempScore, setTempScore] = useState(props.drink.score)
 
   const handleClick = () => {
-    history.push(`/drink/${props._id}`)
+    history.push(`/drink/${props.drink._id}`)
   }
   const handleUpvote = () => {
     setTempScore(tempScore + 1)
@@ -27,7 +27,11 @@ function DrinkCard(props) {
       <div className={styles.textWrapper}>
         <h2 className={styles.title}>{props.drink.name}</h2>
         <p className={styles.description}>{props.drink.description}</p>
-        <div className={styles.votingContainer}><Upvote id={props.drink._id} active={false} handleUpvoteForParent={handleUpvote} /> {tempScore} <Downvote id={props.drink._id} active={false} handleDownvoteForParent={handleDownvote} /></div>
+        <div className={styles.votingContainer}>
+          <Upvote id={props.drink._id} active={!!props.likedDrinks.find(d => d === props.drink._id)} handleUpvoteForParent={handleUpvote} />
+          {tempScore}
+          <Downvote id={props.drink._id} active={!!props.dislikedDrinks.find(d => d === props.drink._id)} handleDownvoteForParent={handleDownvote} />
+        </div>
       </div>
     </div>
   );

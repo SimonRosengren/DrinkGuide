@@ -1,11 +1,21 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './profile.module.scss'
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import { Form, Card, Button, Container, Spinner, Alert, Image, Breadcrumb } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
+import fetchWithAuth from '../../services/requestService';
 function Profile() {
 
     const { currentUser, signout } = useAuth()
+    const [currentUserInfo, setCurrentUserInfo] = useState({})
+
+    useEffect(() => {
+        const fetchUserInfo = async () => { 
+            const userInfo = await (await fetchWithAuth('/api/user')).json()
+            setCurrentUserInfo(userInfo)
+        }
+        fetchUserInfo()
+      }, []);
 
     const handleSignout = async () => {
         await signout()
@@ -17,6 +27,7 @@ function Profile() {
                 <Image src='https://i0.wp.com/www.judecoram.com/wp-content/uploads/2018/08/Low-Poly-Red-Panda.jpg?w=700&ssl=1' roundedCircle={true} fluid={true} />
                 <h2>{currentUser.displayName}</h2>
                 <h4>{currentUser.email}</h4>
+                <h4>efternamn: {currentUserInfo.surName}</h4>
 
 
 
@@ -24,7 +35,7 @@ function Profile() {
             </div>
             <div className={styles.main}>
                 <Router>
-                    <NavLink to='/profile/one' replace>One</NavLink>
+                    <NavLink to='/profile/one' replace>one</NavLink>
                     <NavLink to='/profile/two' replace>Twe</NavLink>
 
                     <Route path="/profile/one" render={() => <div>Home</div>} />

@@ -7,6 +7,8 @@ function Signup() {
     const passwordRef = useRef()
     const repeatPasswordRef = useRef()
     const emailRef = useRef()
+    const firstNameRef = useRef()
+    const surNameRef = useRef()
     const displayNameRef = useRef()
     const { signup, currentUser } = useAuth()
     const history = useHistory()
@@ -18,7 +20,7 @@ function Signup() {
         e.preventDefault()
         setLoading(true)
         let success;
-        if (!loading) success = await signup(emailRef.current.value, displayNameRef.current.value, passwordRef.current.value)
+        if (!loading) success = await signup(emailRef.current.value, displayNameRef.current.value, firstNameRef.current.value, surNameRef.current.value, passwordRef.current.value)
         setLoading(false)
         if (!success) {
             setAlertFailure(true)
@@ -36,6 +38,14 @@ function Signup() {
                         <Form.Group id='displayName'>
                             <Form.Label>Display name</Form.Label>
                             <Form.Control type='text' ref={displayNameRef} required />
+                        </Form.Group>
+                        <Form.Group id='firstName'>
+                            <Form.Label>First name</Form.Label>
+                            <Form.Control type='text' ref={firstNameRef} required />
+                        </Form.Group>
+                        <Form.Group id='surName'>
+                            <Form.Label>Surname</Form.Label>
+                            <Form.Control type='text' ref={surNameRef} required />
                         </Form.Group>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>

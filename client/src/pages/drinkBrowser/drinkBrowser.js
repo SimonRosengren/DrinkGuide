@@ -5,17 +5,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import DrinkCard from "../../components/drinkCard/drinkCard";
 import { useAuth } from '../../contexts/AuthContext'
+import fetchWithAuth from "../../services/requestService";
 
 
 function DrinkBrowser(props) {
-  const [drinks, setDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([])
+  const [userLikedDrinks, setUserLikedDrinks] = useState([])
+  const [userDisikedDrinks, setUserDislikedDrinks] = useState([])
   const { currentUser } = useAuth()
   
   useEffect(() => {
     const loadDrinks = async () => {
       var url = "/api/recipe/batch?";
       for (const ingredient of props.pickedIngredients || []) {
-        url = `${url}&ingredients=${ingredient._id}`;
+        url = `${url}&ingredients=${ingredient._id}`
       }
       const idToken = await currentUser.getIdToken()
       let result = await fetch(url);
@@ -23,6 +26,12 @@ function DrinkBrowser(props) {
       setDrinks(result);
     };
     loadDrinks();
+    const loadUserLikeDrinks = async () => {
+      const userInfo = await (await fetchWithAuth('/api/user')).json()
+      setUserLikedDrinks(userInfo.likedDrinks)
+      setUserDislikedDrinks(userInfo.dislikedDrinks)
+    } 
+    loadUserLikeDrinks()
   }, [props.pickedIngredients]);
 
   var settings = {
@@ -39,6 +48,8 @@ function DrinkBrowser(props) {
         {drinks.map((d) => (
           <DrinkCard
             drink={d}
+            likedDrinks={userLikedDrinks}
+            dislikedDrinks={userDisikedDrinks}
           />
         ))}
       </Slider>

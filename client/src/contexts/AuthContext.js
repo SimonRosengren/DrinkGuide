@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import config from '../firebase'
+import fetchWithAuth from '../services/requestService'
 import { initializeApp } from 'firebase/app'
 import { useHistory } from 'react-router-dom'
 import { createUserWithEmailAndPassword, onAuthStateChanged, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
@@ -17,6 +18,8 @@ function AuthProvider({ children }) {
         initializeApp(config)
         const auth = getAuth()
         const unsubscriber = onAuthStateChanged(auth, (user) => {
+
+
             setCurrentUser(user)
             setLoading(false)
         })
@@ -25,11 +28,20 @@ function AuthProvider({ children }) {
     }, [])
 
     // TODO: Handle this better
-    const signup = async (email, displayName, password) => {
+    const signup = async (email, displayName, firstName, surName, password) => {
         const auth = getAuth()
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password)
-            const test = await updateProfile(getAuth().currentUser, { displayName: displayName })
+            await updateProfile(getAuth().currentUser, { displayName: displayName })
+            await fetchWithAuth('/api/user/create', {
+                headers: { 'Content-Type': 'application/json' },
+                method: 'POST',
+                body: JSON.stringify({
+                    firstName,
+                    surName,
+                    firebaseID: result.user.uid
+                })
+            })
             return true
         } catch (error) {
             return false
