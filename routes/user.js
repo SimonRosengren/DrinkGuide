@@ -11,6 +11,14 @@ router.post('/create', authHandler, async (req, res) => {
     res.send(200)
 });
 
+router.post('/addingredient', authHandler, async (req, res) => {
+    if (!req.firebaseID) return req.send(401)
+    const user = await User.findOne({ firebaseID: req.firebaseID }).exec()
+    user.bar.push(req.params.id)
+    user.save()
+    res.send(200)
+})
+
 router.get('/', authHandler, async (req, res) => {
     if (!req.firebaseID) return req.send(401)
     const user = await User.findOne({ firebaseID: req.firebaseID }).exec()
