@@ -64,7 +64,6 @@ function AuthProvider({ children }) {
             const result = await signOut(auth)
             history.push('/')
         } catch (error) {
-            // Do something
         }
     }
 
