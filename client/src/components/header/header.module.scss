@@ -21,7 +21,7 @@
       &::after {
         width: 2rem;
         height: 2px;
-        background-color: $color-text;
+        background-color: $color-text-white;
         display: inline-block;
       }
       &::before,
@@ -82,7 +82,7 @@
   }
 
   .menuItem {
-    color: $color-text;
+    color: $color-text-white;
     text-decoration: none;
     font-size: x-large;
     padding: 0.5rem;

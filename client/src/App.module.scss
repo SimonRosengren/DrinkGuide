@@ -2,9 +2,8 @@
 @import './styles/sizes.scss';
 
 .app {
-    color: $color-text;
-    background-color: $color-secondary;
-    height: 100vh;
+    color: $color-text-white;
+    background-color: $color-primary-neutral;
 }
 .appBody {
     margin: auto;

@@ -1,0 +1,12 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+button {
+    border-radius: $rounded-corners;
+    padding: $spacing-xs $spacing-s;
+    text-align: center;
+    border: none;
+    text-transform: uppercase;
+    color: $color-text-white;
+    background-color: $color-button-neutral;
+}

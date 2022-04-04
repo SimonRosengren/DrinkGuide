@@ -20,7 +20,7 @@ function Downvote(props) {
     }
 
     return (
-        <BiDownvote onClick={handleClick} className={styles.vote} style={{ color: active ? 'tomato' : 'black' }} />
+        <BiDownvote onClick={handleClick} className={styles.vote} style={{ color: active ? '#f29195' : '#fafafa' }} />
     );
 }
 
