@@ -1,0 +1,24 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.bar {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: $spacing-s;
+    padding: $spacing-xs;
+    display: flex;
+    padding: 0;
+}
+.link {
+    text-decoration: none;
+    color: $color-text-white;
+    margin-right: $spacing-s;
+    padding: $spacing-xs $spacing-s;
+    border-radius: 0 0 $rounded-corners $rounded-corners;
+}
+.linkg:hover {
+    background-color: $color-primary-neutral;
+}
+.selected {
+    background-color: $color-primary-neutral;
+}

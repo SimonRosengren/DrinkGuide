@@ -62,7 +62,7 @@ ul {
     padding: .4rem;
     margin: .3rem 0;
     background-color: $color-third;
-    color: $color-text;
+    color: $color-text-white;
     font-weight: 900;
     font-size: 1.2rem;
     border-radius: 2px;
@@ -72,9 +72,9 @@ ul {
     .previewWrapper {
         height: 25vh;
         text-align: center;
-        border-left: 1px solid $color-text;
-        border-right: 1px solid $color-text;
-        border-top: 1px solid $color-text;
+        border-left: 1px solid $color-text-white;
+        border-right: 1px solid $color-text-white;
+        border-top: 1px solid $color-text-white;
         padding: $spacing-s;
         overflow: scroll;
         -ms-overflow-style: none;
@@ -95,7 +95,7 @@ ul {
     padding: .4rem;
     margin: 0;
     background-color: $color-third;
-    color: $color-text;
+    color: $color-text-white;
     font-weight: 900;
     font-size: 1.2rem;
     border-radius: 0 0 2px 2px;

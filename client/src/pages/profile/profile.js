@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import styles from './profile.module.scss'
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
-import { Form, Card, Button, Container, Spinner, Alert, Image, Breadcrumb } from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
+import Button from '../../components/button/button'
 import { useAuth } from '../../contexts/AuthContext'
 import fetchWithAuth from '../../services/requestService';
 import DrinkList from '../../components/drinkList/drinkList';
+import NavigationLinkBar from '../../components/navigationLinkBar/navigationLinkBar';
 function Profile() {
 
     const { currentUser, signout } = useAuth()
     const [currentUserInfo, setCurrentUserInfo] = useState({})
 
     useEffect(() => {
-        const fetchUserInfo = async () => { 
+        const fetchUserInfo = async () => {
             const userInfo = await (await fetchWithAuth('/api/user')).json()
             setCurrentUserInfo(userInfo)
         }
         fetchUserInfo()
-      }, []);
+    }, []);
 
     const handleSignout = async () => {
         await signout()
@@ -30,18 +32,13 @@ function Profile() {
                 <h4>{currentUser.email}</h4>
                 <h4>efternamn: {currentUserInfo.surName}</h4>
 
-
-
-                <Button onClick={handleSignout} className='w-100'>Sign out</Button>
+                <Button content={'Sign out'} onClick={handleSignout} className='w-100' />
             </div>
             <div className={styles.main}>
                 <Router>
-                    <NavLink to='/profile/liked-drinks' replace>Liked drinks</NavLink>
-                    <NavLink to='/profile/two' replace>Twe</NavLink>
-
+                    <NavigationLinkBar links={[{ path: '/profile/liked-drinks', text: 'Liked drinks' }, { path: '/profile/bar', text: 'My bar' }]} />
                     <Route path="/profile/liked-drinks"><DrinkList ids={currentUserInfo.likedDrinks} /></Route>
-                    <Route path='/profile/two'>{JSON.stringify(currentUserInfo)}</Route>
-                    <Route path='/profile/three'><h2>Three</h2></Route>
+                    <Route path='/profile/bar'>{JSON.stringify(currentUserInfo)}</Route>
                 </Router>
             </div>
         </div>

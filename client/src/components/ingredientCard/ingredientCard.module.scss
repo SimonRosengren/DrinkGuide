@@ -4,39 +4,30 @@
 
 .wrapper {
     width: 100%;
-    margin-bottom: $spacing-s;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    margin-bottom: $spacing-xs;
+    text-transform: capitalize;
     .button {
-        background-color: $color-fifth;
+        background-color: $color-text-white;
         border: none;
-        border-radius: 6px;
-        padding: $spacing-s;
-        font-size: large;
+        border-radius: $rounded-corners;
         width: 100%;
+        color: $color-text-dark;
+        cursor: pointer;
     }
     .split {
-        background-color: $color-fifth;
+        background-color: $color-text-white;
         border: none;
-        border-radius: 6px 0 0 6px;
-        padding: $spacing-s;
+        border-radius: $rounded-corners 0 0 $rounded-corners;
         width: 100%;
         flex: 4;
-        font-size: large;
+        color: $color-text-dark;
     }
     .dismissButton{
-        margin: 0;
-        border: none;
-        background-color: $color-third;
-        border-radius: 0 6px 6px 0;
-        flex: 1;
-        padding: $spacing-s;
-        font-size: large;
+        background-color: $color-button-negative-neutral;
+        border-radius: 0 $rounded-corners $rounded-corners 0;
+        padding:  0 $spacing-xs;
+        cursor: pointer;
     }
-}
-
-
-p {
-    margin: 0;
 }

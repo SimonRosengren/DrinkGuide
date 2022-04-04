@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./drinkList.module.scss";
 import SmallDrinkCard from "../smallDrinkCard/smallDrinkCard";
+import ListItem from "../listItem/listItem";
 
 function DrinkList(props) {
 
@@ -24,7 +25,7 @@ function DrinkList(props) {
         <div className={styles.wrapper}>
             <ul>
                 {drinkList.map(d => {
-                    return <li><SmallDrinkCard drink={d} /></li>
+                    return <li><ListItem content={{image: 'https://www.greenhasgroup.com/wp-content/uploads/2017/05/drin-1l-1.jpg', ...d}} /></li>
                 })}
             </ul>
         </div>

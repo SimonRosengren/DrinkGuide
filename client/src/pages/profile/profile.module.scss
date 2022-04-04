@@ -1,3 +1,7 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/breakpoints.scss';
+
 .wrapper {
     display: flex;
     flex-direction: row;
@@ -5,9 +9,14 @@
 .info {
     width: 30%;
     padding: 1rem;
-    border-right: 1px solid black;
+    height: 40vh;
+    @media (max-width: $bp1) {
+        display: none;
+    }
 }
 .main {
     width: 100%;
-    padding: 1rem;
+    height: 65vh;
+    background-color: $color-primary-light;
+    border-radius: $rounded-corners;
 }

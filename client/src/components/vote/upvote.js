@@ -20,7 +20,7 @@ function Upvote(props) {
     }
 
     return (
-        <BiUpvote onClick={handleClick} className={styles.vote} style={{ color: active ? 'tomato' : 'black' }} />
+        <BiUpvote onClick={handleClick} className={styles.vote} style={{ color: active ? '#f29195' : '#fafafa' }} />
     );
 }
 

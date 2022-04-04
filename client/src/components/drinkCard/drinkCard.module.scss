@@ -3,15 +3,14 @@
 
 .wrapper {
     display: flex;
-    color: black;
+    color: $color-text-white;
     flex-direction: column;
     align-items: center;
     border-radius: .4rem;
     height: 30rem;
     text-align: center;
     margin: .5rem;
-    box-shadow: 0 0 1px #000000;
-    background: $color-fourth;
+    background: $color-primary-neutral;
     .imageWrapper {
         height: 20rem;
         margin-top: $spacing-m;
