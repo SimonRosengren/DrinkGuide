@@ -1,5 +1,5 @@
 const config = {
-    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    apiKey: 'AIzaSyDS2Dvy4hFUaaoauS12jFhOz4OAPfWHVrw',
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
     projectId: process.env.REACT_APP_FIREBASE_PROJECTID,

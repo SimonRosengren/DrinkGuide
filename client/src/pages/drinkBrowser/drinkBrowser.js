@@ -20,7 +20,6 @@ function DrinkBrowser(props) {
       for (const ingredient of props.pickedIngredients || []) {
         url = `${url}&ingredients=${ingredient._id}`
       }
-      const idToken = await currentUser.getIdToken()
       let result = await fetch(url);
       result = await result.json();
       setDrinks(result);
