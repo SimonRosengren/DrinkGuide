@@ -6,20 +6,20 @@
   justify-content: space-between;
   z-index: 2;
   transition: top 0.5s;
-  padding: $spacing-m $spacing-m;
+  margin-bottom: $spacing-s;
 
   .navigationButton {
     text-align: center;
     cursor: pointer;
     z-index: 100;
-
     .navigationIcon {
       position: relative;
-      margin-top: 0.8rem;
+      margin-top: 1.2rem;
+      margin-right: 0.5rem;
       &,
       &::before,
       &::after {
-        width: 2rem;
+        width: 1.8rem;
         height: 2px;
         background-color: $color-text-white;
         display: inline-block;
@@ -32,11 +32,11 @@
         transition: all 0.2s;
       }
       &::before {
-        top: -0.8rem;
+        top: -0.6rem;
         transform-origin: center;
       }
       &::after {
-        top: 0.8rem;
+        top: 0.6rem;
       }
     }
   }

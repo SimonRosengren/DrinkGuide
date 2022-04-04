@@ -6,7 +6,11 @@ button {
     padding: $spacing-xs $spacing-s;
     text-align: center;
     border: none;
-    text-transform: uppercase;
     color: $color-text-white;
     background-color: $color-button-neutral;
+    font-size: medium;
+
+    p {
+        font-size: medium;
+    }
 }

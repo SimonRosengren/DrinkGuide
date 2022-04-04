@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ingredientCard.module.scss";
+import { FiXCircle } from "react-icons/fi";
 
 function IngredientCard(props) {
   const [isActive, setIsActive] = useState(false);
@@ -18,13 +19,13 @@ function IngredientCard(props) {
 
   return (
     <div className={styles.wrapper}>
-      <button className={className} onClick={(e) => handleOnClick()}>
+      <div className={className} onClick={(e) => handleOnClick()}>
         {props.title}
-      </button>
+      </div>
       {props.unmountMe ? (
-        <button className={styles.dismissButton} onClick={dismiss}>
-          x
-        </button>
+        <div className={styles.dismissButton} onClick={dismiss}>
+          <FiXCircle className='mb-1'/>
+        </div>
       ) : null}
     </div>
   );

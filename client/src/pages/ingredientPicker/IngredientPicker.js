@@ -4,6 +4,7 @@ import InputWithButton from "../../components/inputWithButton/inputWithButton";
 import IngredientCard from "../../components/ingredientCard/ingredientCard";
 import { BiDrink } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
+import Button from "../../components/button/button";
 
 function IngredientPicker(props) {
   const [suggestedIngredients, setSuggestedIngredients] = useState([]);
@@ -74,9 +75,7 @@ function IngredientPicker(props) {
           </div>
         </div>
       </div>
-      <button className={styles.nextButton} onClick={handleFindDrinks}>
-        Find drinks <BiDrink className={styles.icon} />
-      </button>
+      <Button className={styles.nextButton} content={<p>Find drinks <BiDrink className={styles.icon} /></p>} handleClick={handleFindDrinks} />
     </div>
   );
 }
