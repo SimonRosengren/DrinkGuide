@@ -5,7 +5,7 @@ class ApiError extends Error {
         if (Error.captureStackTrace) {
             Error.captureStackTrace(this, ApiError);
         }
-
+        // Log this.stack
         this.name = 'ApiError';
         this.status = status;
         this.publicMessage = publicMessage;

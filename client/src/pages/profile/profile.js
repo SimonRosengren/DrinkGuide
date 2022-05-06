@@ -32,7 +32,7 @@ function Profile() {
                 <h4>{currentUser.email}</h4>
                 <h4>efternamn: {currentUserInfo.surName}</h4>
 
-                <Button content={'Sign out'} handleClick={handleSignout} className='w-100' />
+                <Button content={'Sign out'} handleClick={handleSignout} className={styles.signOutButton} />
             </div>
             <div className={styles.main}>
                 <Router>

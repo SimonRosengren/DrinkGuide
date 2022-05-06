@@ -24,8 +24,8 @@ function DrinkList(props) {
     return (
         <div className={styles.wrapper}>
             <ul>
-                {drinkList.map(d => {
-                    return <li><ListItem content={{image: 'https://www.greenhasgroup.com/wp-content/uploads/2017/05/drin-1l-1.jpg', ...d}} /></li>
+                {drinkList.map((d, index) => {
+                    return <li key={d._id || index}><ListItem content={{image: 'https://www.greenhasgroup.com/wp-content/uploads/2017/05/drin-1l-1.jpg', ...d}} /></li>
                 })}
             </ul>
         </div>

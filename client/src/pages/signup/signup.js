@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { Form, Card, Button, Container, Spinner, Alert } from 'react-bootstrap'
+import { Spinner, Alert } from 'react-bootstrap'
 import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom";
+import styles from './signup.module.scss'
+import Button from '../../components/button/button'
 
 function Signup() {
     const passwordRef = useRef()
@@ -30,54 +32,53 @@ function Signup() {
     }
 
     return (
-        <>
-            <Card>
-                <Card.Body>
-                    <h2 className='text-center mb-4'>Sign up</h2>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id='displayName'>
-                            <Form.Label>Display name</Form.Label>
-                            <Form.Control type='text' ref={displayNameRef} required />
-                        </Form.Group>
-                        <Form.Group id='firstName'>
-                            <Form.Label>First name</Form.Label>
-                            <Form.Control type='text' ref={firstNameRef} required />
-                        </Form.Group>
-                        <Form.Group id='surName'>
-                            <Form.Label>Surname</Form.Label>
-                            <Form.Control type='text' ref={surNameRef} required />
-                        </Form.Group>
-                        <Form.Group id='email'>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type='email' ref={emailRef} required />
-                        </Form.Group>
-                        <Form.Group id='password'>
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type='password' ref={passwordRef} required />
-                        </Form.Group>
-                        <Form.Group id='passwordRepeat'>
-                            <Form.Label>Repeat password</Form.Label>
-                            <Form.Control type='password' ref={repeatPasswordRef} required />
-                        </Form.Group>
-                        <Button disabled={loading} type="submit" className='w-100'>{!loading ? 'Sign up' :
-                            <Spinner animation="border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </Spinner>}
-                        </Button>
-                    </Form>
-                </Card.Body>
-            </Card>
-            {alertFailure && <Alert variant="danger" onClose={() => setAlertFailure(false)} dismissible>
-                <Alert.Heading>Something went wrong!</Alert.Heading>
-                <p>
-                    Make sure that
-                    <ul>
-                        <li>Password is atleast 6 characters</li>
-                        <li>Email is valid</li>
-                    </ul>
-                </p>
-            </Alert>}
-        </>
+
+        <div className={styles.wrapper}>
+            <div className={styles.formWrapper}>
+                <h2 className='text-center mb-4'>Sign up</h2>
+                <form className={styles.form} onSubmit={handleSubmit}>
+
+                    <label>Display name</label>
+                    <input type='text' ref={displayNameRef} required />
+
+
+                    <label>First name</label>
+                    <input type='text' ref={firstNameRef} required />
+
+
+                    <label>Surname</label>
+                    <input type='text' ref={surNameRef} required />
+
+
+                    <label>Email</label>
+                    <input type='email' ref={emailRef} required />
+
+
+                    <label>Password</label>
+                    <input type='password' ref={passwordRef} required />
+
+
+                    <label>Repeat password</label>
+                    <input type='password' ref={repeatPasswordRef} required />
+
+                    <Button content={!loading ? 'Sign up' : <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>} className={styles.loginButton} />
+                </form>
+                {alertFailure && <Alert variant="danger" onClose={() => setAlertFailure(false)} dismissible>
+                    <Alert.Heading>Something went wrong!</Alert.Heading>
+                    <p>
+                        Make sure that
+                        <ul>
+                            <li>Password is atleast 6 characters</li>
+                            <li>Email is valid</li>
+                        </ul>
+                    </p>
+                </Alert>}
+            </div>
+        </div>
+
+
     );
 }
 

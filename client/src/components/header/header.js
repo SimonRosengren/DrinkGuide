@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 import Logo from '../logo/logo';
 import styles from './header.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 
 function Menu({ showJobApplication }) {
     const [showMenu, setShowMenu] = useState(false);
     const menuContainer = useRef(null);
     const { currentUser } = useAuth()
+    const history = useHistory()
 
     useEffect(() => {
         const handleEsc = (event) => {
@@ -34,7 +35,9 @@ function Menu({ showJobApplication }) {
 
     return (
         <header className={styles.header} id="header" ref={menuContainer}>
-            <Logo />
+            <Logo onClick={() => {
+                history.push('/')
+            }} />
             <input
                 type="checkbox"
                 className={styles.navigationCheckbox}
