@@ -8,28 +8,51 @@
     display: flex;
     height: 86vh;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+
     .formWrapper {
         display: flex;
-        width: 40%;
-        height: 60%;
+        width: 100%;
+        align-items: center;
+
+        @media (min-width: $bp1) {
+            width: 80%;
+        }
+
+        @media (min-width: $bp2) {
+            height: 60%;
+        }
+
         flex-direction: column;
-        background-color: $color-primary-light;
         border-radius: $rounded-corners;
         padding: $spacing-m;
+
+        .loginLogo {
+            max-width: 40%;
+            margin-bottom: $spacing-m;
+        }
+
         form {
             display: flex;
             flex-direction: column;
-            input {
-                border: none;
-                border-radius: $rounded-corners;
-                padding: $spacing-xs;
+
+            .inputWrapper {
+                border-bottom: 1px solid $color-primary-dark;
+                input {
+                    border: none;
+                    background-color: $color-primary-neutral;
+                    border-radius: $rounded-corners;
+                    padding: $spacing-xs;
+                    outline: none;
+                    color: white;
+                }
             }
+
             .loginButton {
                 margin-top: $spacing-s;
                 background-color: $color-button-positive-neutral;
             }
         }
-    } 
+    }
 }

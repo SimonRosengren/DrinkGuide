@@ -4,6 +4,9 @@ import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom";
 import styles from './signup.module.scss'
 import Button from '../../components/button/button'
+import { BiEnvelope, BiLockAlt, BiUser } from "react-icons/bi";
+import { Image } from 'react-bootstrap'
+import bartender from '../../static/bartenderw.png'
 
 function Signup() {
     const passwordRef = useRef()
@@ -35,36 +38,40 @@ function Signup() {
 
         <div className={styles.wrapper}>
             <div className={styles.formWrapper}>
-                <h2 className='text-center mb-4'>Sign up</h2>
+                <div className={styles.signUpLogo}>
+                    <Image src={bartender} alt="Barman icons created by Freepik - Flaticon" roundedCircle={true} fluid={true} />
+                </div>
                 <form className={styles.form} onSubmit={handleSubmit}>
 
-                    <label>Display name</label>
-                    <input type='text' ref={displayNameRef} required />
-
-
-                    <label>First name</label>
-                    <input type='text' ref={firstNameRef} required />
-
-
-                    <label>Surname</label>
-                    <input type='text' ref={surNameRef} required />
-
-
-                    <label>Email</label>
-                    <input type='email' ref={emailRef} required />
-
-
-                    <label>Password</label>
-                    <input type='password' ref={passwordRef} required />
-
-
-                    <label>Repeat password</label>
-                    <input type='password' ref={repeatPasswordRef} required />
+                    <div className={styles.inputWrapper}>
+                        <BiUser />
+                        <input type='text' ref={displayNameRef} required placeholder='Display name' />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <BiUser />
+                        <input type='text' ref={firstNameRef} required placeholder='First name' />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <BiUser />
+                        <input type='text' ref={surNameRef} required placeholder='Surname' />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <BiEnvelope />
+                        <input type='email' ref={emailRef} required placeholder='Email' />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <BiLockAlt />
+                        <input type='password' ref={passwordRef} required placeholder='Password' />
+                    </div >
+                    <div className={styles.inputWrapper}>
+                        <BiLockAlt />
+                        <input type='password' ref={repeatPasswordRef} required placeholder='Repeat password' />
+                    </div>
 
                     <Button content={!loading ? 'Sign up' : <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>} className={styles.loginButton} />
-                </form>
+                </form >
                 {alertFailure && <Alert variant="danger" onClose={() => setAlertFailure(false)} dismissible>
                     <Alert.Heading>Something went wrong!</Alert.Heading>
                     <p>
@@ -74,9 +81,10 @@ function Signup() {
                             <li>Email is valid</li>
                         </ul>
                     </p>
-                </Alert>}
-            </div>
-        </div>
+                </Alert>
+                }
+            </div >
+        </div >
 
 
     );

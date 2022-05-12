@@ -4,6 +4,9 @@ import { useAuth } from '../../contexts/AuthContext'
 import { useHistory } from "react-router-dom";
 import styles from './signin.module.scss'
 import Button from '../../components/button/button'
+import bartender from '../../static/bartender.png'
+import { Image } from 'react-bootstrap'
+import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 
 function Signin() {
     const passwordRef = useRef()
@@ -30,23 +33,31 @@ function Signin() {
     return (
         <div className={styles.wrapper}>
             <div className={styles.formWrapper}>
-                <h2 className='text-center mb-4'>Sign in</h2>
+                <div className={styles.loginLogo}>
+                    <Image src={bartender} alt="Barman icons created by Freepik - Flaticon" roundedCircle={true} fluid={true} />
+                </div>
                 <form onSubmit={handleSubmit} className={styles.form}>
-                    <label>Email</label>
-                    <input type='email' ref={emailRef} required />
-                    <label>Password</label>
-                    <input type='password' ref={passwordRef} required />
-                    <Button content={!loading ? 'Sign in' : <Spinner animation="border" role="status">
+                    <div className={styles.inputWrapper}>
+                        <label><BiEnvelope /></label>
+                        <input type='email' ref={emailRef} required />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <BiLockAlt />
+                        <input type='password' ref={passwordRef} required />
+                    </div>
+                    <Button content={!loading ? 'Login' : <Spinner animation="border" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </Spinner>} className={styles.loginButton} />
 
                 </form>
-                {alertFailure && <Alert variant="danger" onClose={() => setAlertFailure(false)} dismissible>
-                    <Alert.Heading>Something went wrong!</Alert.Heading>
-                    <p>Failed to sign in. Please try again!</p>
-                </Alert>}
-            </div>
-        </div>
+                {
+                    alertFailure && <Alert variant="danger" onClose={() => setAlertFailure(false)} dismissible>
+                        <Alert.Heading>Something went wrong!</Alert.Heading>
+                        <p>Failed to sign in. Please try again!</p>
+                    </Alert>
+                }
+            </div >
+        </div >
     );
 }
 
