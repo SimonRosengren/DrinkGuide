@@ -7,6 +7,23 @@ body {
     min-height: 100vh;
 }
 
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color-text-white;
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $color-text-white;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $color-text-white;
+}
+
 .app {
     color: $color-text-white;
     background-color: $color-primary-neutral;
@@ -29,5 +46,6 @@ body {
     @media (min-width: $bp3) {
         padding: 0 12vw;
     }
+
     min-height: 100vh;
 }
