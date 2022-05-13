@@ -9,9 +9,11 @@ import liquor from '../../static/liquor.png'
 import rum from '../../static/rum.png'
 import shot from '../../static/shot.png'
 import { Image } from 'react-bootstrap'
+import CardWithClose from "../../components/cardWithClose/CardWithClose";
 
 function IngredientPicker(props) {
   const [suggestedIngredients, setSuggestedIngredients] = useState([]);
+  const [renderInfoCard, setRenderInfoCard] = useState(true)
   const history = useHistory();
 
   const handleFindDrinks = () => {
@@ -20,28 +22,20 @@ function IngredientPicker(props) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.topInfoCard}>
-        <div className={styles.infoCardContentWrapper}>
-          <div className={styles.topImageWrapper}>
-            <div className={styles.topLeftImageWrapper}>
-              <Image src={liquor} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
+      {renderInfoCard && <CardWithClose className={styles.infoCard} content={
+        <div className={styles.infoWrapper}>
+            <div className={styles.contentWrapper}>
+              <h2>Welcome!</h2>
+              <p>Start by searching for any type of alcoholic or non-alcholic beverage that you've got at home.
+                Then add the beverage to your bar by clicking it. Repeat this process until you've replicated your home bar.
+                Click 'Find drinks' at the bottom of the page and get inspired by hundreds of exciting recipes. Enjoy!
+              </p>
             </div>
-            <div className={styles.topCenterImageWrapper}>
-              <Image src={shot} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
+            <div className={styles.imageWrapper}>
+                <Image src={liquor} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
             </div>
-            <div className={styles.topRightImageWrapper}>
-              <Image src={rum} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
-            </div>
-          </div>
-          <div className={styles.content}>
-            <p>Start by searching for any type of alcoholic or non-alcholic beverage that you've got at home.
-              Then add the beverage to your bar by clicking it. Repeat this process until you've replicated your home bar.
-              Click 'Find drinks' at the bottom of the page and get inspired by hundreds of exciting recipes. Enjoy!
-            </p>
-          </div>
         </div>
-
-      </div>
+      } unmount={() => setRenderInfoCard(false)} />}
       <SuggestionSearch
         handleOnChange={async (e) => {
           if (e.target.value) {

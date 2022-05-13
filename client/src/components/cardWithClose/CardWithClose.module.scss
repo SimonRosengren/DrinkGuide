@@ -1,0 +1,20 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/breakpoints.scss';
+
+.wrapper {
+    border-radius: $rounded-corners;
+    position: relative;
+    margin-bottom: $spacing-s;
+    margin-top: $spacing-s;
+    .closeButton {
+        position: absolute;
+        top: 0;
+        color: $color-text-dark;
+        right: $spacing-xs;
+        cursor: pointer;
+    }
+    .closeButton:hover {
+        color: $color-button-negative-neutral;
+    }
+}

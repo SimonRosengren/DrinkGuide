@@ -5,41 +5,23 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-
-    .topInfoCard {
-        .infoCardContentWrapper {
-            display: flex;
-            flex-direction: column;
+    .infoWrapper {
+        display: flex;
+        flex-direction: row;
+        background-color: $color-secondary-dark;
+        color: $color-text-dark;
+        border-radius: $rounded-corners;
+        align-items: center;
+        .contentWrapper {
+            flex: 2;
+            text-align: justify;
             padding: $spacing-s;
-            background-color: $color-primary-light;
-            margin-bottom: $spacing-s;
+            background-color: $color-secondary-light;
             border-radius: $rounded-corners;
         }
-
-        .content {
-            margin-top: $spacing-s;
-        }
-
-        .topImageWrapper {
-            margin-top: -5rem;
-            display: flex;
-            flex-direction: row;
-            align-items: end;
-            justify-content: space-between;
-
-            .topLeftImageWrapper {
-                max-width: 40%;
-                margin-bottom: -0.2rem;
-            }
-
-            .topCenterImageWrapper {
-                max-width: 25%;
-                margin-bottom: -1.8rem;
-            }
-
-            .topRightImageWrapper {
-                max-width: 25%;
-            }
+        .imageWrapper {
+            flex: 2;
+            padding: $spacing-s;
         }
     }
 
