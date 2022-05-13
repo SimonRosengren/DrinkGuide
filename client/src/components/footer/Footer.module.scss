@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/breakpoints.scss';
+
+.wrapper {
+    bottom: 0;
+    position: absolut;
+    margin-top: $spacing-l;
+    padding: $spacing-s;
+    a {
+        color: $color-text-white;
+    }
+}

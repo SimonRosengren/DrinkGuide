@@ -12,6 +12,7 @@ import AuthProvider from "./contexts/AuthContext";
 import { Container } from 'react-bootstrap'
 import PrivateRoute from './components/PrivateRoute'
 import Profile from './pages/profile/profile'
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          <Footer />
         </AuthProvider>
       </div>
     </Router>
