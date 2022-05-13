@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import styles from "./inputWithButton.module.scss";
+import styles from "./suggestionSearch.module.scss";
 import { RiSearch2Line } from "react-icons/ri";
 
-function InputWithButton(props) {
+function SuggestionSearch(props) {
   const [value, setValue] = useState("");
 
   const handleSubmit = e => {
@@ -19,16 +19,16 @@ function InputWithButton(props) {
 
   return (
     <div className={styles.wrapper}>
-        <input
-          className={styles.input}
-          type="text"
-          value={value}
-          placeholder="Search ingredients..."
-          onChange={e => handleOnChange(e)}
-        />
-        <div className={styles.button}><RiSearch2Line /></div>
+      <RiSearch2Line />
+      <input
+        className={styles.input}
+        type="text"
+        value={value}
+        placeholder="Search ingredients..."
+        onChange={e => handleOnChange(e)}
+      />
     </div>
   );
 }
 
-export default InputWithButton;
+export default SuggestionSearch;

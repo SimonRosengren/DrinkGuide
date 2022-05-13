@@ -5,24 +5,69 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+
+    .topInfoCard {
+        .infoCardContentWrapper {
+            display: flex;
+            flex-direction: column;
+            padding: $spacing-s;
+            background-color: $color-primary-light;
+            margin-bottom: $spacing-s;
+            border-radius: $rounded-corners;
+        }
+
+        .content {
+            margin-top: $spacing-s;
+        }
+
+        .topImageWrapper {
+            margin-top: -5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: end;
+            justify-content: space-between;
+
+            .topLeftImageWrapper {
+                max-width: 40%;
+                margin-bottom: -0.2rem;
+            }
+
+            .topCenterImageWrapper {
+                max-width: 25%;
+                margin-bottom: -1.8rem;
+            }
+
+            .topRightImageWrapper {
+                max-width: 25%;
+            }
+        }
+    }
+
     .barWrapper {
         display: flex;
         flex-direction: row;
         margin-bottom: $spacing-s;
         margin-top: $spacing-s;
         border-radius: $rounded-corners;
+        background-color: $color-primary-light;
+        padding-top: $spacing-s;
+
         .leftColumn {
             text-align: center;
             flex: 1;
             height: 45vh;
+
             @media (min-width: $bp1) {
                 height: 50vh;
             }
+
             @media (min-width: $bp2) {
                 height: 60vh;
-            } 
+            }
+
             overflow: hidden;
             border-radius: $rounded-corners 0 0 $rounded-corners;
+
             .leftWrapper {
                 background-color: $color-primary-light;
                 border-right: 1px solid $color-primary-dark;
@@ -47,14 +92,18 @@
             text-align: center;
             flex: 1;
             height: 45vh;
+
             @media (min-width: $bp1) {
                 height: 50vh;
             }
+
             @media (min-width: $bp2) {
                 height: 60vh;
-            } 
+            }
+
             overflow: hidden;
             border-radius: $rounded-corners $rounded-corners $rounded-corners 0;
+
             .rightWrapper {
                 border-radius: 0 $rounded-corners 0 0;
                 height: 100%;

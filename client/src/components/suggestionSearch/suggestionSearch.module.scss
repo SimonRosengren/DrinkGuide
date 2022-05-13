@@ -1,0 +1,25 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/breakpoints.scss';
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: $color-primary-light;
+    padding: $spacing-xs;
+    border-radius: $rounded-corners;
+    .input {
+        width: 100%;
+        outline: none;
+        border: none;
+        color: $color-text-white;
+        background-color: $color-primary-light;
+        margin: 0 $spacing-s;
+
+
+        @media (min-width: $bp2) {
+            padding: $spacing-s;
+        }
+    }
+}

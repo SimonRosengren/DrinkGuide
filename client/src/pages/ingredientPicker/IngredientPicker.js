@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import styles from "./ingredientPicker.module.scss";
-import InputWithButton from "../../components/inputWithButton/inputWithButton";
+import SuggestionSearch from "../../components/suggestionSearch/suggestionSearch";
 import IngredientCard from "../../components/ingredientCard/ingredientCard";
 import { BiDrink } from "react-icons/bi";
 import { useHistory } from "react-router-dom";
 import Button from "../../components/button/button";
+import liquor from '../../static/liquor.png'
+import rum from '../../static/rum.png'
+import shot from '../../static/shot.png'
+import { Image } from 'react-bootstrap'
 
 function IngredientPicker(props) {
   const [suggestedIngredients, setSuggestedIngredients] = useState([]);
@@ -16,7 +20,29 @@ function IngredientPicker(props) {
 
   return (
     <div className={styles.wrapper}>
-      <InputWithButton
+      <div className={styles.topInfoCard}>
+        <div className={styles.infoCardContentWrapper}>
+          <div className={styles.topImageWrapper}>
+            <div className={styles.topLeftImageWrapper}>
+              <Image src={liquor} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
+            </div>
+            <div className={styles.topCenterImageWrapper}>
+              <Image src={shot} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
+            </div>
+            <div className={styles.topRightImageWrapper}>
+              <Image src={rum} alt="Barman icons created by Freepik - Flaticon" fluid={true} />
+            </div>
+          </div>
+          <div className={styles.content}>
+            <p>Start by searching for any type of alcoholic or non-alcholic beverage that you've got at home.
+              Then add the beverage to your bar by clicking it. Repeat this process until you've replicated your home bar.
+              Click 'Find drinks' at the bottom of the page and get inspired by hundreds of exciting recipes. Enjoy!
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <SuggestionSearch
         handleOnChange={async (e) => {
           if (e.target.value) {
             let result = await (
