@@ -11,10 +11,10 @@
         background-color: $color-secondary-dark;
         color: $color-text-dark;
         border-radius: $rounded-corners;
-        align-items: center;
+        
         .contentWrapper {
-            flex: 2;
-            text-align: justify;
+            flex: 3;
+            
             padding: $spacing-s;
             background-color: $color-secondary-light;
             border-radius: $rounded-corners;
@@ -37,7 +37,7 @@
         .leftColumn {
             text-align: center;
             flex: 1;
-            height: 45vh;
+            height: 30vh;
 
             @media (min-width: $bp1) {
                 height: 50vh;
@@ -73,7 +73,7 @@
         .rightColumn {
             text-align: center;
             flex: 1;
-            height: 45vh;
+            height: 30vh;
 
             @media (min-width: $bp1) {
                 height: 50vh;

@@ -26,9 +26,7 @@ function IngredientPicker(props) {
         <div className={styles.infoWrapper}>
             <div className={styles.contentWrapper}>
               <h2>Welcome!</h2>
-              <p>Start by searching for any type of alcoholic or non-alcholic beverage that you've got at home.
-                Then add the beverage to your bar by clicking it. Repeat this process until you've replicated your home bar.
-                Click 'Find drinks' at the bottom of the page and get inspired by hundreds of exciting recipes. Enjoy!
+              <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!
               </p>
             </div>
             <div className={styles.imageWrapper}>
