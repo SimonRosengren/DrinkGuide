@@ -2,8 +2,17 @@
 @import '../../styles/sizes.scss';
 
 .wrapper {
-    padding: $spacing-xl;
-    p {
-        font-size: larger;
+    background-color: $color-primary-light;
+    border-radius: $rounded-corners;
+    margin: 0 $spacing-m;
+    .headerWrapper {
+        border-radius: $rounded-corners $rounded-corners 0 0;
+        background-color: $color-primary-dark;
+        padding: $spacing-xs;
+        text-align: center;
     }
+    .body {
+        padding: $spacing-m;
+    }
+
 }

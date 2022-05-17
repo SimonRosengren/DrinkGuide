@@ -12,6 +12,7 @@ import AuthProvider from "./contexts/AuthContext";
 import { Container } from 'react-bootstrap'
 import PrivateRoute from './components/PrivateRoute'
 import Profile from './pages/profile/profile'
+import LikedDrinks from './pages/likedDrinks/likedDrinks'
 import Footer from "./components/footer/Footer";
 
 
@@ -41,6 +42,7 @@ function App() {
                 <Signin />
               </Route>
               <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/liked-drinks" component={LikedDrinks} />
               <Route path="/">
                 <IngredientPicker
                   pickedIngredients={pickedIngredients}

@@ -7,15 +7,15 @@
     flex-direction: row;
     justify-content: space-between;
     border-radius: $rounded-corners;
-    color: $color-text-dark;
+    background-color: $color-primary-light;
     margin-bottom: $spacing-xs;
-    height: 3rem;
     color: $color-text-white;
     .imageContainer {
         img {
-            width: 3rem;
-            height: 3rem;
+            width: 4rem;
+            height: 4rem;
             object-fit: cover;
+            border-radius: $rounded-corners 0 0 $rounded-corners;
         }
     }
     .itemContainer {
