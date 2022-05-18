@@ -28,9 +28,9 @@ function DrinkCard(props) {
         <h2 className={styles.title}>{props.drink.name}</h2>
         <p className={styles.description}>{props.drink.description}</p>
         <div className={styles.votingContainer}>
-          <Upvote id={props.drink._id} active={!!props.likedDrinks.find(d => d === props.drink._id)} handleUpvoteForParent={handleUpvote} />
+          <Upvote id={props.drink._id} active={props.likedDrinks.includes(props.drink._id)} handleUpvoteForParent={handleUpvote} />
           {tempScore}
-          <Downvote id={props.drink._id} active={!!props.dislikedDrinks.find(d => d === props.drink._id)} handleDownvoteForParent={handleDownvote} />
+          <Downvote id={props.drink._id} active={props.dislikedDrinks.includes(props.drink._id)} handleDownvoteForParent={handleDownvote} />
         </div>
       </div>
     </div>
