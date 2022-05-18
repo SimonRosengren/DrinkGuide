@@ -12,7 +12,6 @@ function DrinkBrowser(props) {
   const [drinks, setDrinks] = useState([])
   const [userLikedDrinks, setUserLikedDrinks] = useState([])
   const [userDisikedDrinks, setUserDislikedDrinks] = useState([])
-  const { currentUser } = useAuth()
   
   useEffect(() => {
     const loadDrinks = async () => {

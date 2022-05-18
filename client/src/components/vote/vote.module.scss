@@ -1,4 +1,16 @@
-.vote {
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.active {
     cursor: pointer;
-    margin-bottom: 7px;
+    margin: auto;
+
+}
+.inactive {
+    cursor: auto;
+    color: $color-accent-light;
+    margin: auto;
+}
+.disabled {
+    display: none;
 }
