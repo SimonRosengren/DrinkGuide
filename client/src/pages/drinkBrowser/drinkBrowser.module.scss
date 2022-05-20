@@ -3,7 +3,14 @@
 
 .wrapper {
     background-color: $color-primary-neutral;
-    margin-top: $spacing-l;
+    height: 70vh;
+    padding: 0 $spacing-s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .slideWrapper {
+        width: 90%;
+    }
     .imageWrapper {
         height: 10rem;
     }

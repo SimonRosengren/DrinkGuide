@@ -9,6 +9,14 @@
     font-family: 'Spartan', sans-serif;
     color: $color-text-white;
     cursor: pointer;
+    p {
+        font-size: 0.6rem;
+        margin: 0;
+    }
+    h1 {
+        font-size: 1rem;
+        margin: 0;
+    }
 
 }
 
@@ -24,12 +32,4 @@
     color: $color-logo;
 }
 
-h1 {
-    font-size: 1rem;
-    margin: 0;
-}
 
-p {
-    font-size: 0.6rem;
-    margin: 0;
-}

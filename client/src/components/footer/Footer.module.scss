@@ -7,7 +7,12 @@
     position: absolute;
     margin-top: $spacing-l;
     padding: $spacing-s;
+    line-height: 0;
     a {
         color: $color-text-white;
+        font-size: 0.6rem;
+    }
+    p {
+        font-size: 0.6rem;
     }
 }

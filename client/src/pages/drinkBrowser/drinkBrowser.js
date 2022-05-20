@@ -12,7 +12,7 @@ function DrinkBrowser(props) {
   const [drinks, setDrinks] = useState([])
   const [userLikedDrinks, setUserLikedDrinks] = useState([])
   const [userDisikedDrinks, setUserDislikedDrinks] = useState([])
-  
+
   useEffect(() => {
     const loadDrinks = async () => {
       var url = "/api/recipe/batch?";
@@ -28,7 +28,7 @@ function DrinkBrowser(props) {
       const userInfo = await (await fetchWithAuth('/api/user')).json()
       setUserLikedDrinks(userInfo.likedDrinks)
       setUserDislikedDrinks(userInfo.dislikedDrinks)
-    } 
+    }
     loadUserLikeDrinks()
   }, [props.pickedIngredients]);
 
@@ -38,19 +38,21 @@ function DrinkBrowser(props) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: true
+    arrows: true
   };
   return (
     <div className={styles.wrapper}>
-      <Slider {...settings}>
-        {drinks.map((d) => (
-          <DrinkCard
-            drink={d}
-            likedDrinks={userLikedDrinks}
-            dislikedDrinks={userDisikedDrinks}
-          />
-        ))}
-      </Slider>
+      <div className={styles.slideWrapper}>
+        <Slider {...settings}>
+          {drinks.map((d) => (
+            <DrinkCard
+              drink={d}
+              likedDrinks={userLikedDrinks}
+              dislikedDrinks={userDisikedDrinks}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }

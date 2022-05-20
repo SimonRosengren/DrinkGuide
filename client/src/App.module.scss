@@ -4,7 +4,7 @@
 
 body {
     background-color: $color-primary-neutral;
-    
+    min-height: 100vh;
 }
 
 ::placeholder {
@@ -27,13 +27,12 @@ body {
 .app {
     color: $color-text-white;
     background-color: $color-primary-neutral;
-    
+    min-height: 100vh;
 }
 
 .appBody {
     max-width: 1400px;
     padding: 0 $spacing-xs;
-
     @media (min-width: $bp1) {
         padding: 0 $spacing-l;
     }

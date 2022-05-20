@@ -5,11 +5,33 @@
     background-color: $color-primary-light;
     border-radius: $rounded-corners;
     margin: 0 $spacing-m;
+    word-wrap: break-word;
+    padding: 0;
+    .ingredientWrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
     .headerWrapper {
+        display: flex;
         border-radius: $rounded-corners $rounded-corners 0 0;
-        background-color: $color-primary-dark;
-        padding: $spacing-xs;
+        padding: 0;
         text-align: center;
+        text-transform: uppercase;
+        justify-content: center;
+        align-items: center;
+        .headerText {
+            position: absolute;
+            line-height: 0;
+            h2 {
+                font-size: 2.5rem;
+            }
+            i {
+                font-size: 0.8rem;
+            }
+        }
+        .headerImage {
+            border-radius: $rounded-corners $rounded-corners 0 0;
+        }
     }
     .body {
         padding: $spacing-m;

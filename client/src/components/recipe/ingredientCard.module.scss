@@ -1,0 +1,22 @@
+@import '../../styles/colors.scss';
+@import '../../styles/sizes.scss';
+
+.checked {
+    text-decoration: line-through;
+    color: $color-primary-light;
+}
+
+
+.checked, .unchecked {
+    background-color: $color-primary-dark;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-width: 20%;
+    padding: 4px;
+    margin: $spacing-xs;
+    border-radius: $rounded-corners;
+    box-shadow: 1px 1px 1px 1px grey;
+}
