@@ -6,6 +6,7 @@ const recipeRouter = require('../routes/recipe')
 const voteHandler = require('../routes/vote')
 const userHandler = require('../routes/user')
 const errorHandler = require('../middleware/errorHandler')
+const tagHandler = require('../routes/tag')
 module.exports = (app, express) => {
     app.use('/graphql', graphqlHTTP({
         schema,
@@ -17,4 +18,5 @@ module.exports = (app, express) => {
     app.use('/api/recipe', recipeRouter)
     app.use('/api/vote', voteHandler)
     app.use('/api/user', userHandler)
+    app.use('/api/tags', tagHandler)
 }

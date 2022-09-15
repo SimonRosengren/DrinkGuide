@@ -33,6 +33,7 @@ body {
 .appBody {
     max-width: 1400px;
     padding: 0 $spacing-xs;
+    min-height: 95vh;
     @media (min-width: $bp1) {
         padding: 0 $spacing-l;
     }

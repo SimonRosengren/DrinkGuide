@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ingredientForm.module.scss";
 import IngredientSuggestionCard from "./ingredientSuggestionCard";
 
 function IngredientForm(props) {
   const [recipeName, setRecipeName] = useState("");
   const [description, setDescription] = useState("");
+  const [tags, setTags] = useState([])
+  const [allTags, setAllTags] = useState([])
+  const [tagLine, setTagLine] = useState("");
   const [instructions, setInstructions] = useState("");
   const [ingredientInput, setIngredientInput] = useState("");
+  const [unitInput, setUnitInput] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [currentIngredient, setCurrentIngredient] = useState({});
   const [qtyInput, setQtyInput] = useState(0);
+
+  const getAllTags = async () => {
+      const t = await (await fetch('/api/tags/all')).json();
+      setAllTags(t)
+  }
+
+  useEffect(() => {
+    getAllTags()
+  }, [])
 
   const suggestIngredients = async (e) => {
     setIngredientInput(e.target.value);
@@ -39,8 +52,9 @@ function IngredientForm(props) {
   const addIngredient = () => {
     let temp = ingredients;
     temp.push({
-      qtyInput,
-      ...currentIngredient
+      qty: qtyInput,
+      ...currentIngredient,
+      unit: unitInput
     });
     setIngredients(temp);
     setIngredientInput("");
@@ -80,7 +94,36 @@ function IngredientForm(props) {
               }}
             />
           </div>
-
+          <h2>All tags</h2>
+          <div className={styles.tagMenu}>
+              {allTags.map(t => {
+                return <p onClick={e => {
+                  console.log(e.target.textContent)
+                  const tempArr = tags;
+                  const clicked = allTags.find(ta => ta.name === e.target.textContent)
+                  tempArr.push(clicked)
+                  setTags(tempArr)
+                }}>{t.tag}</p>
+              })}
+          </div>
+          <h2>Chosen tags</h2>
+          <div className={styles.tagMenu}>
+            {tags.map(t => {
+              return <p>{t.tag}</p>
+            })}
+          </div>
+          <div className={styles.inputWrapper}>
+            <label for="description">Tag line</label>
+            <textarea
+              type="text"
+              name="tagLine"
+              className="fullsize"
+              value={tagLine}
+              onChange={(e) => {
+                setTagLine(e.target.value);
+              }}
+            />
+          </div>
           <div className={styles.inputWrapper}>
             <label for="description">Description</label>
             <textarea
@@ -93,7 +136,7 @@ function IngredientForm(props) {
               }}
             />
           </div>
-
+          
           <div className={styles.inputWrapper}>
             <label for="instructions">Instructions</label>
             <textarea
@@ -124,6 +167,10 @@ function IngredientForm(props) {
                 <div className={styles.inputWrapper}>
                   <label for="qty">Amount</label>
                   <input type="text" name="qty" value={qtyInput} onChange={e => setQtyInput(e.target.value)} />
+                </div>
+                <div className={styles.inputWrapper}>
+                  <label for="qty">Unit</label>
+                  <input type="text" name="unit" value={unitInput} onChange={e => setUnitInput(e.target.value)} />
                 </div>
               </div>
               <div className={styles.suggestionsWrapper}>
