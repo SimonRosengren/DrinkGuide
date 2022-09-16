@@ -65,46 +65,46 @@ const checkIfIngredientsExist = (ingredients) => {
   return true
 }
 
+const getRecipeWithImage = async (recipe) => {
+  let image = await fetch(
+    `https://api.unsplash.com/search/photos?orientation=portrait&query=${recipe.name} drink&client_id=${config.unsplashed.key}&page=1&per_page=1`
+  )
+  image = await image.json()
+  return {
+    image,
+    ...recipe._doc,
+  }
+}
+
 router.get('/batch', async (req, res, next) => {
   let ingredients = req.query.ingredients
   if (!Array.isArray(ingredients)) {
     const temp = []
-    temp.push(ingredients)
+    if (ingredients) temp.push(ingredients)
     ingredients = temp
   }
   const maxMissing = req.params.maxMissing || 0
 
-  if (!ingredients) {
-    // return random recipes
-  }
-
-  // Find the recipes where there is an intersection of ingredients. Go through all these recipes and take the totalingredients - intersection.length inte större än max saknade ingredienser
-
+  let recipes
   let acceptedRecipes = []
-  const ingredientsFormatted = ingredients.map((i) => {
-    return {
-      _id: new ObjectId(i),
-    }
-  })
-  const recipes = await Recipe.find({
-    'ingredients._id': { $in: ingredients },
-  }).exec() // Get intersecting recipes. Returns empty array?
 
-  for (const recipe of recipes) {
-    const intersection = ingredients.filter((value) =>
-      recipe.ingredients.includes(value)
-    ) // get the intersection
-    if (recipe.ingredients.length - intersection.length > maxMissing) {
-      // only add those where the missing ingredients are ok in number
-      let image = await fetch(
-        `https://api.unsplash.com/search/photos?orientation=portrait&query=${recipe.name} drink&client_id=${config.unsplashed.key}&page=1&per_page=1`
-      )
-      image = await image.json()
-      const recipeWithImage = {
-        image,
-        ...recipe._doc,
+  if (!ingredients.length) {
+    recipes = await Recipe.find().limit(10).exec()
+    for (const recipe of recipes) {
+      acceptedRecipes.push(await getRecipeWithImage(recipe))
+    }
+  } else {
+    recipes = await Recipe.find({
+      'ingredients._id': { $in: ingredients },
+    }).exec()
+
+    for (const recipe of recipes) {
+      const intersection = ingredients.filter((value) =>
+        recipe.ingredients.includes(value)
+      ) // get the intersection
+      if (recipe.ingredients.length - intersection.length > maxMissing) {
+        acceptedRecipes.push(await getRecipeWithImage(recipe))
       }
-      acceptedRecipes.push(recipeWithImage)
     }
   }
 
@@ -115,10 +115,14 @@ router.get('/', async (req, res) => {
   const recipeDoc = await Recipe.findById(req.query.uuid).exec()
   let ingredients = []
   for (let i = 0; i < recipeDoc.ingredients.length; i++) {
-    const ingredient = await Ingredient.findById(recipeDoc.ingredients[i]._id)
+    const ingredient = await Ingredient.findById(
+      recipeDoc.ingredients[i]._id
+    ).exec()
     ingredients.push({
       qty: recipeDoc.ingredients[i].qty,
-      ...ingredient,
+      unit: recipeDoc.ingredients[i].unit,
+      name: ingredient.name,
+      id: ingredient._id,
     })
   }
   res.json({
