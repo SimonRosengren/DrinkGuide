@@ -76,7 +76,7 @@ function Menu({ showJobApplication }) {
                             <div className={styles.menuItem}><BiHomeCircle className={styles.icon} />Home</div>
                         </NavLink></li>
 
-                        <li>{currentUser && <NavLink to={'/profile'} onClick={() => setShowMenu(false)} className={styles.menuItem}>
+                        <li>{currentUser && <NavLink to={'/profile/liked-drinks'} onClick={() => setShowMenu(false)} className={styles.menuItem}>
                             <div className={styles.menuItem}><BiUser className={styles.icon} />Profile</div>
                         </NavLink>
                         }</li>

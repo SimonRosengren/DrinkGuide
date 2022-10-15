@@ -30,6 +30,10 @@ body {
     min-height: 100vh;
 }
 
+a, a:active, a:hover {
+    color: $color-text-white;
+}
+
 .appBody {
     max-width: 1400px;
     padding: 0 $spacing-xs;

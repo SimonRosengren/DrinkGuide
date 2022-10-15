@@ -33,7 +33,7 @@ export default function Recipe({ drink }) {
           })}
         </div>
         <h3>Instructions</h3>
-        <p>{JSON.stringify(drink)}</p>
+        <p>{drink.instructions}</p>
       </div>
     </div>
   )
